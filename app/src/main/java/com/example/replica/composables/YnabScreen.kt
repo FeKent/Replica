@@ -1,6 +1,7 @@
 package com.example.replica.composables
 
 import android.view.Surface
+import android.widget.ImageView
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
@@ -25,6 +26,7 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
@@ -75,31 +77,30 @@ fun YnabScreen() {
         Divider(color = Color.LightGray)
         Spacer(modifier = Modifier.size(5.dp))
         Column {
-
             Row {
                 Image(
                     painter = painterResource(R.drawable.arrow_compare),
                     contentDescription = "Comparison Arrows",
-                    modifier = Modifier.align(Alignment.CenterVertically)
+                    modifier = Modifier.align(Alignment.CenterVertically).rotate(90f).padding(start = 8.dp)
                 )
-                Spacer(modifier = Modifier.size(5.dp))
-                Column {
-                    Row {
-                        Text(text = "From")
+                Spacer(modifier = Modifier.size(25.dp))
+                Column{
+                    Row(modifier = Modifier.padding(vertical = 8.dp)) {
+                        Text(text = "From:", color = Color.Gray, fontWeight = FontWeight.Medium)
                         Spacer(modifier = Modifier.size(20.dp))
                         Text(text = "Ready to Assign")
                         Spacer(modifier = Modifier.size(5.dp))
-                        Text(text = "$1230.23")
+                        Text(text = "$1230.23", color = Color(0, 102, 139))
                     }
                     Spacer(modifier = Modifier.size(5.dp))
                     Divider(color = Color.LightGray)
                     Spacer(modifier = Modifier.size(5.dp))
-                    Row {
-                        Text(text = "To")
+                    Row (modifier = Modifier.padding(vertical = 8.dp)){
+                        Text(text = "To:", color = Color.Gray, fontWeight = FontWeight.Medium)
                         Spacer(modifier = Modifier.size(20.dp))
                         Text(text = "Uncat Transactions")
                         Spacer(modifier = Modifier.size(5.dp))
-                        Text(text = "$50")
+                        Text(text = "$50", color = Color(0, 102, 139))
                     }
                 }
 
