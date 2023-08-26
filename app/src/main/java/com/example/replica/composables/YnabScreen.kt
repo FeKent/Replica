@@ -1,37 +1,43 @@
 package com.example.replica.composables
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Button
-import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.modifier.modifierLocalConsumer
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.example.replica.R
+import org.intellij.lang.annotations.JdkConstants.HorizontalAlignment
 
 @Composable
 fun YnabScreen() {
     Column {
         Spacer(modifier = Modifier.size(20.dp))
-        Text(text = "$0.00", textAlign = TextAlign.End, modifier = Modifier
-            .height(300.dp)
-            .fillMaxWidth())
+        Text(
+            text = "$0.00", textAlign = TextAlign.End, modifier = Modifier
+                .height(300.dp)
+                .fillMaxWidth()
+        )
         Column {
 
             Row {
-                Image(painter = painterResource(R.drawable.arrow_compare), contentDescription = "Comparison Arrows")
+                Image(
+                    painter = painterResource(R.drawable.arrow_compare),
+                    contentDescription = "Comparison Arrows",
+                )
                 Spacer(modifier = Modifier.size(5.dp))
                 Column {
                     Row {
@@ -59,7 +65,9 @@ fun YnabScreen() {
 
 @Composable
 fun NumberPad() {
-    Column(modifier = Modifier.width(500.dp).padding(start = 20.dp)) {
+    Column(modifier = Modifier
+        .width(500.dp)
+        .padding(start = 20.dp)) {
         Row {
             Text(text = "7", modifier = Modifier.weight(0.5f))
             Text(text = "8", modifier = Modifier.weight(0.5f))
@@ -77,8 +85,14 @@ fun NumberPad() {
         }
         Row {
             Text(text = "", modifier = Modifier.weight(0.5f))
-            Text(text = "0", modifier = Modifier.weight(0.5f))
-            Icon(painter = painterResource(R.drawable.backspace), contentDescription = "Backspace Button", modifier = Modifier.weight(0.5f))
+            Text(text = "0", modifier = Modifier.width(130.dp))
+            Image(
+                painter = painterResource(R.drawable.backspace),
+                alignment = Alignment.BottomStart,
+                contentDescription = "Backspace Button",
+                modifier = Modifier
+                    .weight(0.5f)
+                    .clickable { /*Todo*/ })
         }
     }
     Button(onClick = { /*TODO*/ }) {
