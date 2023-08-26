@@ -8,7 +8,6 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -84,7 +83,7 @@ fun YnabScreen() {
                         .clickable { /*TODO*/ }
                 )
                 Spacer(modifier = Modifier.size(24.dp))
-                Column() {
+                Column {
                     Row(modifier = Modifier.padding(vertical = 8.dp)) {
                         Text(text = "From:", color = Color.Gray, fontWeight = FontWeight.Medium)
                         Spacer(modifier = Modifier.size(16.dp))
@@ -115,7 +114,7 @@ fun YnabScreen() {
 }
 
 @Composable
-fun NumberPad(modifier: Modifier = Modifier) {
+fun NumberPad() {
     Box {
         Column(
             modifier = Modifier
