@@ -7,12 +7,15 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Button
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.modifier.modifierLocalConsumer
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -48,6 +51,7 @@ fun YnabScreen() {
                 }
 
             }
+            Spacer(modifier = Modifier.size(20.dp))
             NumberPad()
         }
     }
@@ -55,25 +59,26 @@ fun YnabScreen() {
 
 @Composable
 fun NumberPad() {
-    Column {
+    Column(modifier = Modifier.width(500.dp).padding(start = 20.dp)) {
         Row {
-            Text(text = "7")
-            Text(text = "8")
-            Text(text = "9")
+            Text(text = "7", modifier = Modifier.weight(0.5f) )
+            Text(text = "8", modifier = Modifier.weight(0.5f))
+            Text(text = "9", modifier = Modifier.weight(0.5f))
         }
         Row {
-            Text(text = "4")
-            Text(text = "5")
-            Text(text = "6")
+            Text(text = "4", modifier = Modifier.weight(0.5f))
+            Text(text = "5", modifier = Modifier.weight(0.5f))
+            Text(text = "6", modifier = Modifier.weight(0.5f))
         }
         Row {
-            Text(text = "1")
-            Text(text = "2")
-            Text(text = "3")
+            Text(text = "1", modifier = Modifier.weight(0.5f))
+            Text(text = "2", modifier = Modifier.weight(0.5f))
+            Text(text = "3", modifier = Modifier.weight(0.5f))
         }
         Row {
-            Text(text = "0")
-            Icon(painter = painterResource(R.drawable.backspace), contentDescription = "Backspace Button")
+            Text(text = "", modifier = Modifier.weight(0.5f))
+            Text(text = "0", modifier = Modifier.weight(0.5f))
+            Icon(painter = painterResource(R.drawable.backspace), contentDescription = "Backspace Button", modifier = Modifier.weight(0.5f))
         }
     }
     Button(onClick = { /*TODO*/ }) {
