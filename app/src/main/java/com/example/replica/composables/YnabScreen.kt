@@ -5,38 +5,53 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.material3.Button
-import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Divider
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.example.replica.R
-import org.intellij.lang.annotations.JdkConstants.HorizontalAlignment
 
 @Composable
 fun YnabScreen() {
-    Column {
+    Column(modifier = Modifier.fillMaxSize()) {
         Spacer(modifier = Modifier.size(20.dp))
         Text(
-            text = "$0.00", textAlign = TextAlign.End, modifier = Modifier
+            text = "$0.00",
+            color = Color(135, 187, 70, 255),
+            textAlign = TextAlign.End,
+            fontSize = 40.sp,
+            fontWeight = FontWeight.Light,
+            modifier = Modifier
                 .height(300.dp)
                 .fillMaxWidth()
+                .wrapContentSize(align = Alignment.CenterEnd)
+                .padding(end = 8.dp)
+
         )
+        Divider(color = Color.LightGray)
+        Spacer(modifier = Modifier.size(5.dp))
         Column {
 
             Row {
                 Image(
                     painter = painterResource(R.drawable.arrow_compare),
                     contentDescription = "Comparison Arrows",
+                    modifier = Modifier.align(Alignment.CenterVertically)
                 )
                 Spacer(modifier = Modifier.size(5.dp))
                 Column {
@@ -47,6 +62,9 @@ fun YnabScreen() {
                         Spacer(modifier = Modifier.size(5.dp))
                         Text(text = "$1230.23")
                     }
+                    Spacer(modifier = Modifier.size(5.dp))
+                    Divider(color = Color.LightGray)
+                    Spacer(modifier = Modifier.size(5.dp))
                     Row {
                         Text(text = "To")
                         Spacer(modifier = Modifier.size(20.dp))
@@ -57,6 +75,8 @@ fun YnabScreen() {
                 }
 
             }
+            Spacer(modifier = Modifier.size(5.dp))
+            Divider(color = Color.LightGray)
             Spacer(modifier = Modifier.size(20.dp))
             NumberPad()
         }
@@ -65,9 +85,11 @@ fun YnabScreen() {
 
 @Composable
 fun NumberPad() {
-    Column(modifier = Modifier
-        .width(500.dp)
-        .padding(start = 20.dp)) {
+    Column(
+        modifier = Modifier
+            .width(250.dp)
+            .padding(start = 20.dp)
+    ) {
         Row {
             Text(text = "7", modifier = Modifier.weight(0.5f))
             Text(text = "8", modifier = Modifier.weight(0.5f))
@@ -91,11 +113,15 @@ fun NumberPad() {
                 alignment = Alignment.BottomStart,
                 contentDescription = "Backspace Button",
                 modifier = Modifier
+                    .size(20.dp)
                     .weight(0.5f)
-                    .clickable { /*Todo*/ })
+                    .clickable { /*Todo*/ }
+
+            )
+            Button(onClick = { /*TODO*/ }) {
+                Text(text = "Done")
+            }
         }
-    }
-    Button(onClick = { /*TODO*/ }) {
-        Text(text = "Done")
+
     }
 }
