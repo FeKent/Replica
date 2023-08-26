@@ -34,7 +34,7 @@ import com.example.replica.R
 @Composable
 fun YnabScreen() {
 
-    Column(modifier = Modifier.fillMaxSize()) {
+    Column(modifier = Modifier.fillMaxSize(1f)) {
         CenterAlignedTopAppBar(
             title = {
                 Text(
@@ -62,15 +62,17 @@ fun YnabScreen() {
             fontSize = 40.sp,
             fontWeight = FontWeight.Light,
             modifier = Modifier
-                .height(300.dp)
                 .fillMaxWidth()
+                .weight(2f)
                 .wrapContentSize(align = Alignment.CenterEnd)
                 .padding(end = 8.dp)
 
         )
         Divider(color = Color.LightGray)
         Spacer(modifier = Modifier.size(4.dp))
-        Column {
+        Column(modifier = Modifier
+            .fillMaxWidth()
+            .weight(1f)) {
             Row {
                 Image(
                     painter = painterResource(R.drawable.arrow_compare),
@@ -82,7 +84,7 @@ fun YnabScreen() {
                         .clickable { /*TODO*/ }
                 )
                 Spacer(modifier = Modifier.size(24.dp))
-                Column{
+                Column() {
                     Row(modifier = Modifier.padding(vertical = 8.dp)) {
                         Text(text = "From:", color = Color.Gray, fontWeight = FontWeight.Medium)
                         Spacer(modifier = Modifier.size(16.dp))
@@ -93,7 +95,7 @@ fun YnabScreen() {
                     Spacer(modifier = Modifier.size(4.dp))
                     Divider(color = Color.LightGray)
                     Spacer(modifier = Modifier.size(4.dp))
-                    Row (modifier = Modifier.padding(vertical = 8.dp)){
+                    Row(modifier = Modifier.padding(vertical = 8.dp)) {
                         Text(text = "To:", color = Color.Gray, fontWeight = FontWeight.Medium)
                         Spacer(modifier = Modifier.size(16.dp))
                         Text(text = "Uncat Transactions")
@@ -101,7 +103,6 @@ fun YnabScreen() {
                         Text(text = "$50", color = Color(0, 102, 139))
                     }
                 }
-
             }
             Spacer(modifier = Modifier.size(4.dp))
             Divider(color = Color.LightGray)
@@ -114,7 +115,7 @@ fun YnabScreen() {
 }
 
 @Composable
-fun NumberPad() {
+fun NumberPad(modifier: Modifier = Modifier) {
     Box {
         Column(
             modifier = Modifier
