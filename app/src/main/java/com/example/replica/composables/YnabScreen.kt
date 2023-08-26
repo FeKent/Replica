@@ -61,7 +61,7 @@ fun YnabScreen() {
 fun NumberPad() {
     Column(modifier = Modifier.width(500.dp).padding(start = 20.dp)) {
         Row {
-            Text(text = "7", modifier = Modifier.weight(0.5f) )
+            Text(text = "7", modifier = Modifier.weight(0.5f))
             Text(text = "8", modifier = Modifier.weight(0.5f))
             Text(text = "9", modifier = Modifier.weight(0.5f))
         }
