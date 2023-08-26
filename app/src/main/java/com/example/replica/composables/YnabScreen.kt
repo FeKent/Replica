@@ -1,7 +1,9 @@
 package com.example.replica.composables
 
+import android.view.Surface
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -12,9 +14,14 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentSize
+import androidx.compose.foundation.magnifier
 import androidx.compose.material3.Button
+import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.Divider
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -26,8 +33,30 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.replica.R
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun YnabScreen() {
+    CenterAlignedTopAppBar(
+        title = {
+            Text(
+                text = "YNAB - Move Money Screen",
+                color = Color(135, 187, 70, 255),
+                fontWeight = FontWeight.SemiBold,
+                fontSize = 20.sp,
+            )
+        },
+        navigationIcon = {
+            Image(
+                painter = painterResource(id = R.drawable.menu),
+                contentDescription = "Menu Icon",
+                modifier = Modifier
+                    .clickable { /*TODO*/ }
+                    .size(40.dp)
+            )
+        },
+
+        )
+
     Column(modifier = Modifier.fillMaxSize()) {
         Spacer(modifier = Modifier.size(20.dp))
         Text(
@@ -85,43 +114,46 @@ fun YnabScreen() {
 
 @Composable
 fun NumberPad() {
-    Column(
-        modifier = Modifier
-            .width(250.dp)
-            .padding(start = 20.dp)
-    ) {
-        Row {
-            Text(text = "7", modifier = Modifier.weight(0.5f))
-            Text(text = "8", modifier = Modifier.weight(0.5f))
-            Text(text = "9", modifier = Modifier.weight(0.5f))
-        }
-        Row {
-            Text(text = "4", modifier = Modifier.weight(0.5f))
-            Text(text = "5", modifier = Modifier.weight(0.5f))
-            Text(text = "6", modifier = Modifier.weight(0.5f))
-        }
-        Row {
-            Text(text = "1", modifier = Modifier.weight(0.5f))
-            Text(text = "2", modifier = Modifier.weight(0.5f))
-            Text(text = "3", modifier = Modifier.weight(0.5f))
-        }
-        Row {
-            Text(text = "", modifier = Modifier.weight(0.5f))
-            Text(text = "0", modifier = Modifier.width(130.dp))
-            Image(
-                painter = painterResource(R.drawable.backspace),
-                alignment = Alignment.BottomStart,
-                contentDescription = "Backspace Button",
-                modifier = Modifier
-                    .size(20.dp)
-                    .weight(0.5f)
-                    .clickable { /*Todo*/ }
+    Box {
+        Column(
+            modifier = Modifier
+                .width(500.dp)
+                .padding(start = 20.dp)
+        ) {
+            Row {
+                Text(text = "7", modifier = Modifier.weight(0.5f))
+                Text(text = "8", modifier = Modifier.weight(0.5f))
+                Text(text = "9", modifier = Modifier.weight(0.5f))
+            }
+            Row {
+                Text(text = "4", modifier = Modifier.weight(0.5f))
+                Text(text = "5", modifier = Modifier.weight(0.5f))
+                Text(text = "6", modifier = Modifier.weight(0.5f))
+            }
+            Row {
+                Text(text = "1", modifier = Modifier.weight(0.5f))
+                Text(text = "2", modifier = Modifier.weight(0.5f))
+                Text(text = "3", modifier = Modifier.weight(0.5f))
+            }
+            Row {
+                Text(text = "", modifier = Modifier.weight(0.25f))
+                Text(text = "0", modifier = Modifier.weight(0.25f))
+                Image(
+                    painter = painterResource(R.drawable.backspace),
+                    alignment = Alignment.BottomStart,
+                    contentDescription = "Backspace Button",
+                    modifier = Modifier
+                        .size(20.dp)
+                        .weight(0.25f)
+                        .clickable { /*Todo*/ }
 
-            )
-            Button(onClick = { /*TODO*/ }) {
-                Text(text = "Done")
+                )
             }
         }
-
+        Button(onClick = { /*TODO*/ }, modifier = Modifier.align(Alignment.BottomEnd)) {
+            Text(text = "Done")
+        }
     }
+
 }
+
