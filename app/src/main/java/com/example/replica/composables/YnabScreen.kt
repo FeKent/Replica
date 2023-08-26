@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
+import androidx.compose.material3.Button
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -47,7 +48,35 @@ fun YnabScreen() {
                 }
 
             }
-
+            NumberPad()
         }
+    }
+}
+
+@Composable
+fun NumberPad() {
+    Column {
+        Row {
+            Text(text = "7")
+            Text(text = "8")
+            Text(text = "9")
+        }
+        Row {
+            Text(text = "4")
+            Text(text = "5")
+            Text(text = "6")
+        }
+        Row {
+            Text(text = "1")
+            Text(text = "2")
+            Text(text = "3")
+        }
+        Row {
+            Text(text = "0")
+            Icon(painter = painterResource(R.drawable.backspace), contentDescription = "Backspace Button")
+        }
+    }
+    Button(onClick = { /*TODO*/ }) {
+        Text(text = "Done")
     }
 }
