@@ -71,7 +71,7 @@ fun YnabScreen() {
         Spacer(modifier = Modifier.size(4.dp))
         Column(modifier = Modifier
             .fillMaxWidth()
-            .weight(1f)) {
+            .weight(1.3f)) {
             Row {
                 Image(
                     painter = painterResource(R.drawable.arrow_compare),
@@ -87,7 +87,7 @@ fun YnabScreen() {
                     Row(modifier = Modifier.padding(vertical = 8.dp)) {
                         Text(text = "From:", color = Color.Gray, fontWeight = FontWeight.Medium)
                         Spacer(modifier = Modifier.size(16.dp))
-                        Text(text = "Ready to Assign")
+                        Text(text = "Ready to Assign", fontWeight = FontWeight.Bold)
                         Spacer(modifier = Modifier.size(4.dp))
                         Text(text = "$1230.23", color = Color(0, 102, 139))
                     }
@@ -97,7 +97,7 @@ fun YnabScreen() {
                     Row(modifier = Modifier.padding(vertical = 8.dp)) {
                         Text(text = "To:", color = Color.Gray, fontWeight = FontWeight.Medium)
                         Spacer(modifier = Modifier.size(16.dp))
-                        Text(text = "Uncat Transactions")
+                        Text(text = "Uncat Transactions", fontWeight = FontWeight.Bold)
                         Spacer(modifier = Modifier.size(4.dp))
                         Text(text = "$50", color = Color(0, 102, 139))
                     }
@@ -118,30 +118,30 @@ fun NumberPad() {
     Box {
         Column(
             modifier = Modifier
-                .width(500.dp)
-                .padding(start = 20.dp)
+                .width(400.dp)
+                .padding(horizontal = 60.dp)
         ) {
             Row {
-                Text(text = "7", modifier = Modifier.weight(0.5f))
-                Text(text = "8", modifier = Modifier.weight(0.5f))
-                Text(text = "9", modifier = Modifier.weight(0.5f))
+                Text(text = "7", fontSize = 20.sp, color = Color.DarkGray, modifier = Modifier.weight(0.5f))
+                Text(text = "8", fontSize = 20.sp, color = Color.DarkGray, modifier = Modifier.weight(0.5f))
+                Text(text = "9", fontSize = 20.sp, color = Color.DarkGray, modifier = Modifier.weight(0.5f))
             }
             Spacer(modifier = Modifier.size(8.dp))
             Row {
-                Text(text = "4", modifier = Modifier.weight(0.5f))
-                Text(text = "5", modifier = Modifier.weight(0.5f))
-                Text(text = "6", modifier = Modifier.weight(0.5f))
+                Text(text = "4", fontSize = 20.sp, color = Color.DarkGray, modifier = Modifier.weight(0.5f))
+                Text(text = "5", fontSize = 20.sp, color = Color.DarkGray, modifier = Modifier.weight(0.5f))
+                Text(text = "6", fontSize = 20.sp, color = Color.DarkGray, modifier = Modifier.weight(0.5f))
             }
             Spacer(modifier = Modifier.size(8.dp))
             Row {
-                Text(text = "1", modifier = Modifier.weight(0.5f))
-                Text(text = "2", modifier = Modifier.weight(0.5f))
-                Text(text = "3", modifier = Modifier.weight(0.5f))
+                Text(text = "1", fontSize = 20.sp, color = Color.DarkGray, modifier = Modifier.weight(0.5f))
+                Text(text = "2", fontSize = 20.sp, color = Color.DarkGray, modifier = Modifier.weight(0.5f))
+                Text(text = "3", fontSize = 20.sp, color = Color.DarkGray, modifier = Modifier.weight(0.5f))
             }
             Spacer(modifier = Modifier.size(8.dp))
             Row {
-                Text(text = "", modifier = Modifier.weight(0.25f))
-                Text(text = "0", modifier = Modifier.weight(0.25f))
+                Text(text = "", fontSize = 20.sp,  modifier = Modifier.weight(0.25f))
+                Text(text = "0", fontSize = 20.sp, color = Color.DarkGray, modifier = Modifier.weight(0.25f))
                 Image(
                     painter = painterResource(R.drawable.backspace),
                     alignment = Alignment.BottomStart,
@@ -154,7 +154,7 @@ fun NumberPad() {
                 )
             }
         }
-        Button(onClick = { /*TODO*/ }, modifier = Modifier.align(Alignment.BottomEnd)) {
+        Button(onClick = { /*TODO*/ }, modifier = Modifier.align(Alignment.BottomEnd) ) {
             Text(text = "Done")
         }
     }
