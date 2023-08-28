@@ -2,6 +2,7 @@ package com.example.replica.composables
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -89,22 +90,27 @@ fun YnabScreen() {
                 Column {
                     Row(modifier = Modifier.padding(vertical = 8.dp)) {
                         Text(text = "From:", color = Color.Gray, fontWeight = FontWeight.Medium)
-                        Spacer(modifier = Modifier.size(16.dp))
-                        Text(text = "Ready to Assign", fontWeight = FontWeight.Bold)
-                        Spacer(modifier = Modifier.size(4.dp))
-                        Text(text = "$1230.23", color = Color(0, 102, 139))
-                        Icon(Icons.Filled.KeyboardArrowRight, contentDescription = "Arrow Right", tint = Color.Gray)
+                        Row(horizontalArrangement = Arrangement.End, modifier = Modifier.fillMaxWidth()) {
+                            Spacer(modifier = Modifier.size(16.dp))
+                            Text(text = "Ready to Assign", fontWeight = FontWeight.Bold)
+                            Spacer(modifier = Modifier.size(4.dp))
+                            Text(text = "$1230.23", color = Color(0, 102, 139))
+                            Icon(Icons.Filled.KeyboardArrowRight, contentDescription = "Arrow Right", tint = Color.Gray)
+                        }
+
                     }
                     Spacer(modifier = Modifier.size(4.dp))
                     Divider(color = Color.LightGray)
                     Spacer(modifier = Modifier.size(4.dp))
                     Row(modifier = Modifier.padding(vertical = 8.dp)) {
                         Text(text = "To:", color = Color.Gray, fontWeight = FontWeight.Medium)
-                        Spacer(modifier = Modifier.size(16.dp))
-                        Text(text = "Uncat Transactions", fontWeight = FontWeight.Bold)
-                        Spacer(modifier = Modifier.size(4.dp))
-                        Text(text = "$50", color = Color(0, 102, 139))
-                        Icon(Icons.Filled.KeyboardArrowRight, contentDescription = "Arrow Right", tint = Color.Gray)
+                        Row(horizontalArrangement = Arrangement.End, modifier = Modifier.fillMaxWidth()) {
+                            Spacer(modifier = Modifier.size(16.dp))
+                            Text(text = "Uncat Transactions", fontWeight = FontWeight.Bold)
+                            Spacer(modifier = Modifier.size(4.dp))
+                            Text(text = "$50", color = Color(0, 102, 139))
+                            Icon(Icons.Filled.KeyboardArrowRight, contentDescription = "Arrow Right", tint = Color.Gray)
+                        }
                     }
                 }
             }
