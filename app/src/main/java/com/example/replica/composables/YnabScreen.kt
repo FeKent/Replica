@@ -78,15 +78,15 @@ fun YnabScreen() {
             .weight(1.3f)) {
             Row {
                 Image(
-                    painter = painterResource(R.drawable.arrow_compare),
+                    painter = painterResource(R.drawable.compare_arrows),
                     contentDescription = "Comparison Arrows",
                     modifier = Modifier
                         .align(Alignment.CenterVertically)
-                        .rotate(90f)
+                        .size(40.dp)
                         .padding(start = 8.dp)
                         .clickable { /*TODO*/ }
                 )
-                Spacer(modifier = Modifier.size(24.dp))
+                Spacer(modifier = Modifier.size(16.dp))
                 Column {
                     Row(modifier = Modifier.padding(vertical = 8.dp)) {
                         Text(text = "From:", color = Color.Gray, fontWeight = FontWeight.Medium)
