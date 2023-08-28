@@ -12,10 +12,13 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentSize
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.KeyboardArrowRight
 import androidx.compose.material3.Button
 import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.Divider
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -90,6 +93,7 @@ fun YnabScreen() {
                         Text(text = "Ready to Assign", fontWeight = FontWeight.Bold)
                         Spacer(modifier = Modifier.size(4.dp))
                         Text(text = "$1230.23", color = Color(0, 102, 139))
+                        Icon(Icons.Filled.KeyboardArrowRight, contentDescription = "Arrow Right", tint = Color.Gray)
                     }
                     Spacer(modifier = Modifier.size(4.dp))
                     Divider(color = Color.LightGray)
@@ -100,6 +104,7 @@ fun YnabScreen() {
                         Text(text = "Uncat Transactions", fontWeight = FontWeight.Bold)
                         Spacer(modifier = Modifier.size(4.dp))
                         Text(text = "$50", color = Color(0, 102, 139))
+                        Icon(Icons.Filled.KeyboardArrowRight, contentDescription = "Arrow Right", tint = Color.Gray)
                     }
                 }
             }
