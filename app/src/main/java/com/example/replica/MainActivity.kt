@@ -44,6 +44,6 @@ fun Replica() {
 
     NavHost(navController = navController, startDestination = Screen.Home.route ){
         composable(Screen.Home.route){ HomeScreen { navController.navigate(Screen.Ynab.route) } }
-        composable(Screen.Ynab.route){ YnabScreen{navController.navigate(Screen.Home.route)}}
+        composable(Screen.Ynab.route){ YnabScreen{ navController.navigate(Screen.Home.route)}}
     }
 }
