@@ -12,6 +12,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.replica.composables.HomeScreen
+import com.example.replica.composables.WhatsAppScreen
 import com.example.replica.composables.YnabScreen
 import com.example.replica.ui.theme.ReplicaTheme
 
@@ -32,9 +33,10 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-sealed class Screen(val route: String){
-    object Home: Screen("Home")
+sealed class Screen(val route: String) {
+    object Home : Screen("Home")
     object Ynab : Screen("YNAB")
+    object WhatsApp : Screen("WhatsApp")
 }
 
 
@@ -42,8 +44,13 @@ sealed class Screen(val route: String){
 fun Replica() {
     val navController = rememberNavController()
 
-    NavHost(navController = navController, startDestination = Screen.Home.route ){
-        composable(Screen.Home.route){ HomeScreen { navController.navigate(Screen.Ynab.route) } }
-        composable(Screen.Ynab.route){ YnabScreen{ navController.navigate(Screen.Home.route)}}
+    NavHost(navController = navController, startDestination = Screen.Home.route) {
+        composable(Screen.Home.route) {
+            HomeScreen(
+                ynabScreen = { navController.navigate(Screen.Ynab.route) },
+                whatsAppScreen = { navController.navigate(Screen.WhatsApp.route) })
+        }
+        composable(Screen.Ynab.route) { YnabScreen { navController.navigate(Screen.Home.route) } }
+        composable(Screen.WhatsApp.route) { WhatsAppScreen() }
     }
 }

@@ -40,7 +40,7 @@ import androidx.compose.ui.unit.sp
 import com.example.replica.R
 
 @Composable
-fun HomeScreen(ynabScreen: () -> Unit) {
+fun HomeScreen(ynabScreen: () -> Unit, whatsAppScreen: () ->Unit) {
     val uriHandler = LocalUriHandler.current
     val portfolioLink = "https://github.com/SnippyRex"
 
@@ -70,10 +70,10 @@ fun HomeScreen(ynabScreen: () -> Unit) {
         ) {
             Column(modifier = Modifier.align(alignment = Alignment.TopCenter)) {
                 ScreenRow(screenChange = { ynabScreen() }, title = "YNAB - Move Money")
-                ScreenRow(screenChange = { /*TODO*/ }, title = "WhatsApp")
+                ScreenRow(screenChange = { whatsAppScreen() }, title = "WhatsApp")
             }
         }
-        Spacer(modifier = Modifier.size(8.dp))
+        Spacer(modifier = Modifier.size(32.dp))
         Image(
             painter = painterResource(id = R.drawable.mirror_image),
             contentDescription = "Image of a person looking in a mirror",
