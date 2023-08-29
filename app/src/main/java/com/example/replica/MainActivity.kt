@@ -51,6 +51,6 @@ fun Replica() {
                 whatsAppScreen = { navController.navigate(Screen.WhatsApp.route) })
         }
         composable(Screen.Ynab.route) { YnabScreen { navController.navigate(Screen.Home.route) } }
-        composable(Screen.WhatsApp.route) { WhatsAppScreen() }
+        composable(Screen.WhatsApp.route) { WhatsAppScreen { navController.navigate(Screen.Home.route) } }
     }
 }
