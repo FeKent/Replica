@@ -47,7 +47,7 @@ fun YnabScreen() {
             text = "$0.00",
             color = Color(135, 187, 70, 255),
             textAlign = TextAlign.End,
-            fontSize = 40.sp,
+            fontSize = 60.sp,
             fontWeight = FontWeight.Light,
             modifier = Modifier
                 .fillMaxWidth()
