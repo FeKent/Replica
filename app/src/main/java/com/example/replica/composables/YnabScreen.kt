@@ -1,3 +1,5 @@
+@file:OptIn(ExperimentalMaterial3Api::class)
+
 package com.example.replica.composables
 
 import androidx.compose.foundation.Image
@@ -20,6 +22,7 @@ import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.Divider
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -38,24 +41,7 @@ import com.example.replica.R
 fun YnabScreen() {
 
     Column(modifier = Modifier.fillMaxSize(1f)) {
-        CenterAlignedTopAppBar(
-            title = {
-                Text(
-                    text = "YNAB - Move Money Screen",
-                    color = Color(135, 187, 70, 255),
-                    fontWeight = FontWeight.SemiBold,
-                    fontSize = 20.sp,
-                )
-            },
-            navigationIcon = {
-                Image(
-                    painter = painterResource(id = R.drawable.menu),
-                    contentDescription = "Menu Icon",
-                    modifier = Modifier
-                        .clickable { /*TODO*/ }
-                        .size(40.dp)
-                )
-            })
+        ElevatedCenterAlignedTopAppBar()
         Divider(color = Color.LightGray)
         Spacer(modifier = Modifier.size(16.dp))
         Text(
@@ -172,3 +158,26 @@ fun NumberPad() {
 
 }
 
+@Composable
+fun ElevatedCenterAlignedTopAppBar() {
+    Surface(shadowElevation = 6.dp, modifier = Modifier.fillMaxWidth()) {
+        CenterAlignedTopAppBar(
+            title = {
+                Text(
+                    text = "YNAB - Move Money Screen",
+                    color = Color(135, 187, 70, 255),
+                    fontWeight = FontWeight.SemiBold,
+                    fontSize = 20.sp,
+                )
+            },
+            navigationIcon = {
+                Image(
+                    painter = painterResource(id = R.drawable.menu),
+                    contentDescription = "Menu Icon",
+                    modifier = Modifier
+                        .clickable { /*TODO*/ }
+                        .size(40.dp)
+                )
+            })
+    }
+}
