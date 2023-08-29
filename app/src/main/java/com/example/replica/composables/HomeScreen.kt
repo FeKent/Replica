@@ -2,15 +2,20 @@
 
 package com.example.replica.composables
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Share
 import androidx.compose.material3.CenterAlignedTopAppBar
@@ -25,6 +30,7 @@ import androidx.compose.ui.Alignment.Companion.CenterVertically
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalUriHandler
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -44,17 +50,30 @@ fun HomeScreen(ynabScreen: () -> Unit) {
         Spacer(modifier = Modifier.size(32.dp))
         Box(modifier = Modifier
             .padding(horizontal = 60.dp)
-            .fillMaxWidth()) {
-            Row(modifier = Modifier.align(alignment = Alignment.Center)) {
-                TextButton(onClick = { ynabScreen() }, modifier = Modifier.background(
-                    Color(135, 187, 70, 100)).fillMaxWidth(2f)) {
+            .fillMaxWidth()
+            .fillMaxHeight(0.5f)
+            .verticalScroll(rememberScrollState())) {
+            Row(modifier = Modifier.align(alignment = Alignment.TopCenter)) {
+                TextButton(onClick = { ynabScreen() }, modifier = Modifier
+                    .background(
+                        Color(135, 187, 70, 100)
+                    )
+                    .fillMaxWidth(2f)) {
                     Text("YNAB - Move Money", fontSize = 20.sp)
                 }
             }
         }
-        Spacer(modifier = Modifier.size(200.dp))
+        Spacer(modifier = Modifier.size(8.dp))
+        Image(
+            painter = painterResource(id = R.drawable.mirror_image),
+            contentDescription = "Image of a person looking in a mirror",
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(200.dp)
+        )
         Box(modifier = Modifier
-            .fillMaxWidth())  {
+            .fillMaxWidth()
+            .fillMaxHeight(0.5f))  {
             Row(modifier = Modifier.align(Alignment.Center)){
                 Icon(Icons.Filled.Share, contentDescription = "Link", tint = Color(135, 187, 70, 255), modifier = Modifier.align(alignment = CenterVertically) )
                 TextButton(onClick = { uriHandler.openUri(portfolioLink) }) {
@@ -62,6 +81,7 @@ fun HomeScreen(ynabScreen: () -> Unit) {
                 }
             }
         }
+
     }
 }
 
