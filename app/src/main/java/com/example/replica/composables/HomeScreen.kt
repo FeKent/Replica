@@ -19,6 +19,7 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Share
 import androidx.compose.material3.CenterAlignedTopAppBar
+import androidx.compose.material3.Divider
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Surface
@@ -44,23 +45,32 @@ fun HomeScreen(ynabScreen: () -> Unit) {
     val portfolioLink = "https://github.com/SnippyRex"
 
     Column(modifier = Modifier.fillMaxSize()) {
-        ElevatedBar(title = {Text(text = stringResource(id = R.string.app_name), fontSize = 40.sp, fontWeight = FontWeight.SemiBold, color = Color(135, 187, 70, 255))})
+        ElevatedBar(title = {
+            Text(
+                text = stringResource(id = R.string.app_name),
+                fontSize = 40.sp,
+                fontWeight = FontWeight.SemiBold,
+                color = Color(135, 187, 70, 255)
+            )
+        })
         Spacer(modifier = Modifier.size(16.dp))
-        Text(text = "A showcase of App Screen Recreations", fontWeight = FontWeight.Medium, textAlign = TextAlign.Center,modifier = Modifier.fillMaxWidth())
+        Text(
+            text = "A showcase of App Screen Recreations",
+            fontWeight = FontWeight.Medium,
+            textAlign = TextAlign.Center,
+            modifier = Modifier.fillMaxWidth()
+        )
         Spacer(modifier = Modifier.size(32.dp))
-        Box(modifier = Modifier
-            .padding(horizontal = 60.dp)
-            .fillMaxWidth()
-            .fillMaxHeight(0.5f)
-            .verticalScroll(rememberScrollState())) {
-            Row(modifier = Modifier.align(alignment = Alignment.TopCenter)) {
-                TextButton(onClick = { ynabScreen() }, modifier = Modifier
-                    .background(
-                        Color(135, 187, 70, 100)
-                    )
-                    .fillMaxWidth(2f)) {
-                    Text("YNAB - Move Money", fontSize = 20.sp)
-                }
+        Box(
+            modifier = Modifier
+                .padding(horizontal = 60.dp)
+                .fillMaxWidth()
+                .fillMaxHeight(0.5f)
+                .verticalScroll(rememberScrollState())
+        ) {
+            Column(modifier = Modifier.align(alignment = Alignment.TopCenter)) {
+                ScreenRow(screenChange = { ynabScreen() }, title = "YNAB - Move Money")
+                ScreenRow(screenChange = { /*TODO*/ }, title = "WhatsApp")
             }
         }
         Spacer(modifier = Modifier.size(8.dp))
@@ -71,11 +81,18 @@ fun HomeScreen(ynabScreen: () -> Unit) {
                 .fillMaxWidth()
                 .height(200.dp)
         )
-        Box(modifier = Modifier
-            .fillMaxWidth()
-            .fillMaxHeight(0.5f))  {
-            Row(modifier = Modifier.align(Alignment.Center)){
-                Icon(Icons.Filled.Share, contentDescription = "Link", tint = Color(135, 187, 70, 255), modifier = Modifier.align(alignment = CenterVertically) )
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .fillMaxHeight(0.5f)
+        ) {
+            Row(modifier = Modifier.align(Alignment.Center)) {
+                Icon(
+                    Icons.Filled.Share,
+                    contentDescription = "Link",
+                    tint = Color(135, 187, 70, 255),
+                    modifier = Modifier.align(alignment = CenterVertically)
+                )
                 TextButton(onClick = { uriHandler.openUri(portfolioLink) }) {
                     Text(text = "Creator Portfolio", textAlign = TextAlign.Center, fontSize = 16.sp)
                 }
@@ -88,7 +105,22 @@ fun HomeScreen(ynabScreen: () -> Unit) {
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun ElevatedBar(title: @Composable ()-> Unit) {
+fun ElevatedBar(title: @Composable () -> Unit) {
     Surface(shadowElevation = 6.dp, modifier = Modifier.fillMaxWidth()) {
         CenterAlignedTopAppBar(title = title)
-}}
+    }
+}
+
+@Composable
+fun ScreenRow(screenChange: () -> Unit, title: String) {
+    TextButton(
+        onClick = { screenChange() }, modifier = Modifier
+            .background(
+                Color(135, 187, 70, 100)
+            )
+            .fillMaxWidth(2f)
+    ) {
+        Text(title, fontSize = 20.sp)
+    }
+    Divider(color = Color(0, 102, 139, 100))
+}
