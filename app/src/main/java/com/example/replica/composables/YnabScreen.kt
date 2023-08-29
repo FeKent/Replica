@@ -38,9 +38,9 @@ import com.example.replica.R
 
 
 @Composable
-fun YnabScreen() {
+fun YnabScreen(backHome: () -> Unit,) {
     Column(modifier = Modifier.fillMaxSize(1f)) {
-        ElevatedCenterAlignedTopAppBar()
+        ElevatedCenterAlignedTopAppBar(backHome = backHome)
         Divider(color = Color.LightGray)
         Spacer(modifier = Modifier.size(16.dp))
         Text(
@@ -225,7 +225,7 @@ fun NumberPad() {
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun ElevatedCenterAlignedTopAppBar() {
+fun ElevatedCenterAlignedTopAppBar(backHome: ()-> Unit) {
     Surface(shadowElevation = 6.dp, modifier = Modifier.fillMaxWidth()) {
         CenterAlignedTopAppBar(
             title = {
@@ -238,7 +238,7 @@ fun ElevatedCenterAlignedTopAppBar() {
             },
             navigationIcon = {
                 Icon(Icons.Filled.Close, "Close", tint = Color(0, 102, 139), modifier = Modifier
-                    .clickable { /*TODO*/ }
+                    .clickable { backHome() }
                     .size(40.dp))
             })
     }
