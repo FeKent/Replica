@@ -81,7 +81,9 @@ fun IncomingMessage(message: String, time: String) {
             Text(
                 text = message,
                 textAlign = TextAlign.Start,
-                fontSize = 14.sp
+                fontSize = 14.sp,
+                lineHeight = 16.sp,
+
             )
             Text(
                 text = time,
@@ -113,6 +115,7 @@ fun OutgoingMessage(message: String, time: String) {
                 text = message,
                 textAlign = TextAlign.Start,
                 fontSize = 14.sp,
+                lineHeight = 16.sp
             )
             Row(modifier = Modifier.align(Alignment.BottomEnd)) {
                 Text(
