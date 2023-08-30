@@ -2,6 +2,7 @@
 
 package com.example.replica.composables
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
@@ -13,7 +14,6 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Call
 import androidx.compose.material.icons.filled.MoreVert
-import androidx.compose.material.icons.filled.Person
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -52,7 +52,7 @@ fun WhatsAppBar(backHome: () -> Unit) {
                 verticalAlignment = Alignment.CenterVertically,
                 modifier = Modifier.fillMaxWidth()
             ) {
-                Icon(Icons.Filled.Person, "Profile Picture", tint = Color.White,modifier = Modifier.size(30.dp))
+                Image(painter = painterResource(R.drawable.poirot_avatar), "Profile Picture",modifier = Modifier.size(40.dp))
                 Spacer(modifier = Modifier.size(8.dp))
                 Text(text = "Hercule Poirot", color = Color.White, fontWeight = FontWeight.SemiBold ,modifier = Modifier.fillMaxWidth(1f))
 
