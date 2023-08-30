@@ -5,11 +5,17 @@ package com.example.replica.composables
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Call
@@ -28,56 +34,107 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.example.replica.R
 
 
 @Composable
 fun WhatsAppScreen(backHome: () -> Unit) {
-    WhatsAppBar(backHome = backHome)
-}
 
-
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable
-fun WhatsAppBar(backHome: () -> Unit) {
     Box(modifier = with(Modifier) {
         fillMaxSize().paint(
             painterResource(R.drawable.whatsapp_background),
             contentScale = ContentScale.FillBounds
         )
     }) {
-        TopAppBar(title = {
+        Column(modifier = Modifier.verticalScroll(rememberScrollState())) {
+            WhatsAppBar(backHome = backHome)
+            Spacer(modifier = Modifier.size(16.dp))
+            IncomingMessage(message = "The false moustache! Quelle Horreur! Never, in the whole of London, have I seen a pair of moustaches to equal mine.")
+            OutgoingMessage(message = "Oh, Mr. Poirot, you do have quite the knack for finding yourself in the most peculiar situations. Remember, it's not the size of the moustache that matters, but the sharpness of the mind behind it.")
+
+        }
+    }
+}
+
+
+@Composable
+fun IncomingMessage(message: String) {
+    Row {
+        Text(
+            text = message, textAlign = TextAlign.Start, fontSize = 14.sp, modifier = Modifier
+                .padding(start = 8.dp, end = 55.dp)
+                .background(color = Color.White, shape = RoundedCornerShape(5.dp))
+                .width(350.dp)
+        )
+    }
+    Spacer(modifier = Modifier.size(6.dp))
+}
+
+@Composable
+fun OutgoingMessage(message: String) {
+    Row {
+        Text(
+            text = message, textAlign = TextAlign.Start, fontSize = 14.sp, modifier = Modifier
+                .padding(start = 55.dp, end = 8.dp)
+                .background(color = Color(231, 255, 219, 255), shape = RoundedCornerShape(5.dp))
+                .width(350.dp)
+        )
+    }
+    Spacer(modifier = Modifier.size(6.dp))
+}
+
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun WhatsAppBar(backHome: () -> Unit) {
+    TopAppBar(
+        title = {
             Row(
                 verticalAlignment = Alignment.CenterVertically,
                 modifier = Modifier.fillMaxWidth()
             ) {
-                Image(painter = painterResource(R.drawable.poirot_avatar), "Profile Picture",modifier = Modifier.size(40.dp))
+                Image(
+                    painter = painterResource(R.drawable.poirot_avatar),
+                    "Profile Picture",
+                    modifier = Modifier.size(40.dp)
+                )
                 Spacer(modifier = Modifier.size(8.dp))
-                Text(text = "Hercule Poirot", color = Color.White, fontWeight = FontWeight.SemiBold ,modifier = Modifier.fillMaxWidth(1f))
+                Text(
+                    text = "Hercule Poirot",
+                    color = Color.White,
+                    fontWeight = FontWeight.SemiBold,
+                    modifier = Modifier.fillMaxWidth(1f)
+                )
 
             }
         },
-            navigationIcon = {
-                IconButton(onClick = { backHome() }) {
-                    Icon(Icons.Filled.ArrowBack, "Back", tint = Color.White ,modifier = Modifier.size(20.dp))
-                }
-            },
-            actions = {
+        navigationIcon = {
+            IconButton(onClick = { backHome() }) {
                 Icon(
-                    painter = painterResource(id = R.drawable.video_call),
+                    Icons.Filled.ArrowBack,
+                    "Back",
                     tint = Color.White,
-                    contentDescription = "Video Call"
+                    modifier = Modifier.size(20.dp)
                 )
-                Spacer(modifier = Modifier.size(16.dp))
-                Icon(Icons.Filled.Call, tint = Color.White, contentDescription = "Call Icon")
-                Spacer(modifier = Modifier.size(8.dp))
-                Icon(Icons.Filled.MoreVert, tint = Color.White, contentDescription = "More Options")
-            },
-            colors = TopAppBarDefaults.smallTopAppBarColors(
-                containerColor = Color(0,128,105,255)
-            ),
-            modifier = Modifier.background(color = Color.LightGray)
-        )
-    }
+            }
+        },
+        actions = {
+            Icon(
+                painter = painterResource(id = R.drawable.video_call),
+                tint = Color.White,
+                contentDescription = "Video Call"
+            )
+            Spacer(modifier = Modifier.size(16.dp))
+            Icon(Icons.Filled.Call, tint = Color.White, contentDescription = "Call Icon")
+            Spacer(modifier = Modifier.size(8.dp))
+            Icon(Icons.Filled.MoreVert, tint = Color.White, contentDescription = "More Options")
+        },
+        colors = TopAppBarDefaults.smallTopAppBarColors(
+            containerColor = Color(0, 128, 105, 255)
+        ),
+        modifier = Modifier.background(color = Color.LightGray)
+    )
 }
