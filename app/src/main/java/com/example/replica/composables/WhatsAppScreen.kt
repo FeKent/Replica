@@ -49,19 +49,70 @@ fun WhatsAppScreen(backHome: () -> Unit) {
             contentScale = ContentScale.FillBounds
         )
     }) {
-        Column(modifier = Modifier.verticalScroll(rememberScrollState())) {
+        Column {
             WhatsAppBar(backHome = backHome)
-            Spacer(modifier = Modifier.size(16.dp))
-            IncomingMessage(
-                message = "The false moustache! Quelle Horreur! Never, in the whole of London, have I seen a pair of moustaches to equal mine.",
-                time = "10:03"
-            )
-            OutgoingMessage(
-                message = "Oh, Mr. Poirot, remember, it's not the size of the moustache that matters, but the sharpness of the mind behind it.",
-                time = "10:05"
-            )
+            Column(modifier = Modifier.verticalScroll(rememberScrollState())) {
+                Spacer(modifier = Modifier.size(4.dp))
+                TimeStamp(date = "Monday")
+                IncomingMessage(
+                    message = "The false moustache! Quelle Horreur! Never, in the whole of London, have I seen a pair of moustaches to equal mine.",
+                    time = "10:03"
+                )
+                OutgoingMessage(
+                    message = "Oh, Mr. Poirot, remember, it's not the size of the moustache that matters, but the sharpness of the mind behind it.",
+                    time = "10:05"
+                )
+                IncomingMessage(
+                    message = "Ah, Miss Marple, your wisdom always shines brighter than the most polished waxed tips. Indeed, it is the little grey cells that truly distinguish a detective, not the follicular extravagance.",
+                    time = "10:08"
+                )
+                OutgoingMessage(
+                    message = "Quite right, Mr. Poirot. Just as a well-trimmed garden reveals hidden beauty, so does a keen intellect uncover the truth amidst the thickest of mysteries.",
+                    time = "10:13"
+                )
+                TimeStamp(date = "Today")
+                IncomingMessage(
+                    message = "My dear Miss Marple, a perplexing case has crossed my path. The disappearance of Lady Fotherington's priceless pearls leaves me intrigued.",
+                    time = "08:23"
+                )
+                OutgoingMessage(
+                    message = "Ah, Mr. Poirot, pearls may be lustrous, but they can also hide secrets within their layers. Remember, it's often the most unassuming oyster that holds the key.",
+                    time = "08:48"
+                )
+                IncomingMessage(
+                    message = "Très vrai, Miss Marple. Just as a diamond's facets reflect light, so must we examine every angle to reveal the hidden facets of truth.",
+                    time = "08:57"
+                )
+                IncomingMessage(
+                    message = "The parallels in our methods never cease to amaze me, Miss Marple. In pearls and puzzles alike, it is the patience and precision that lead to revelations.",
+                    time = "08:59"
+                )
+                OutgoingMessage(
+                    message = "Patience, precision, and a touch of empathy, Mr. Poirot. Just as threads bind a tapestry, our qualities entwine to solve even the most intricate enigmas.",
+                    time = "09:02"
+                )
 
+            }
         }
+    }
+}
+
+@Composable
+fun TimeStamp(date: String) {
+    Box(
+        modifier = Modifier
+            .padding(4.dp)
+            .fillMaxWidth()
+    ) {
+        Text(
+            text = date,
+            fontSize = 14.sp,
+            fontWeight = FontWeight.SemiBold,
+            modifier = Modifier
+                .background(Color(247, 247, 247, 255), shape = RoundedCornerShape(4.dp))
+                .padding(4.dp)
+                .align(Alignment.Center)
+        )
     }
 }
 
