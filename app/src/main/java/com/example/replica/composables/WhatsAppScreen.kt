@@ -19,6 +19,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -26,6 +27,7 @@ import androidx.compose.ui.draw.paint
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.example.replica.R
 
@@ -50,25 +52,31 @@ fun WhatsAppBar(backHome: () -> Unit) {
                 verticalAlignment = Alignment.CenterVertically,
                 modifier = Modifier.fillMaxWidth()
             ) {
-                Icon(Icons.Filled.Person, "Profile Picture", modifier = Modifier.size(30.dp))
+                Icon(Icons.Filled.Person, "Profile Picture", tint = Color.White,modifier = Modifier.size(30.dp))
                 Spacer(modifier = Modifier.size(8.dp))
-                Text(text = "Hercule Poirot", modifier = Modifier.fillMaxWidth(1f))
+                Text(text = "Hercule Poirot", color = Color.White, fontWeight = FontWeight.SemiBold ,modifier = Modifier.fillMaxWidth(1f))
 
             }
-        }, navigationIcon = {
-            IconButton(onClick = { backHome() }) {
-                Icon(Icons.Filled.ArrowBack, "Back", modifier = Modifier.size(20.dp))
-            }
-        }, actions = {
-            Icon(
-                painter = painterResource(id = R.drawable.video_call),
-                contentDescription = "Video Call"
-            )
-            Spacer(modifier = Modifier.size(16.dp))
-            Icon(Icons.Filled.Call, "Call Icon")
-            Spacer(modifier = Modifier.size(8.dp))
-            Icon(Icons.Filled.MoreVert, "More Options")
         },
+            navigationIcon = {
+                IconButton(onClick = { backHome() }) {
+                    Icon(Icons.Filled.ArrowBack, "Back", tint = Color.White ,modifier = Modifier.size(20.dp))
+                }
+            },
+            actions = {
+                Icon(
+                    painter = painterResource(id = R.drawable.video_call),
+                    tint = Color.White,
+                    contentDescription = "Video Call"
+                )
+                Spacer(modifier = Modifier.size(16.dp))
+                Icon(Icons.Filled.Call, tint = Color.White, contentDescription = "Call Icon")
+                Spacer(modifier = Modifier.size(8.dp))
+                Icon(Icons.Filled.MoreVert, tint = Color.White, contentDescription = "More Options")
+            },
+            colors = TopAppBarDefaults.smallTopAppBarColors(
+                containerColor = Color(0,128,105,255)
+            ),
             modifier = Modifier.background(color = Color.LightGray)
         )
     }

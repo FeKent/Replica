@@ -44,7 +44,7 @@ sealed class Screen(val route: String) {
 fun Replica() {
     val navController = rememberNavController()
 
-    NavHost(navController = navController, startDestination = Screen.Home.route) {
+    NavHost(navController = navController, startDestination = Screen.WhatsApp.route) {
         composable(Screen.Home.route) {
             HomeScreen(
                 ynabScreen = { navController.navigate(Screen.Ynab.route) },
