@@ -53,7 +53,7 @@ fun WhatsAppScreen(backHome: () -> Unit) {
             WhatsAppBar(backHome = backHome)
             Spacer(modifier = Modifier.size(16.dp))
             IncomingMessage(message = "The false moustache! Quelle Horreur! Never, in the whole of London, have I seen a pair of moustaches to equal mine.")
-            OutgoingMessage(message = "Oh, Mr. Poirot, you do have quite the knack for finding yourself in the most peculiar situations. Remember, it's not the size of the moustache that matters, but the sharpness of the mind behind it.")
+            OutgoingMessage(message = "Oh, Mr. Poirot, remember, it's not the size of the moustache that matters, but the sharpness of the mind behind it.")
 
         }
     }
@@ -62,28 +62,40 @@ fun WhatsAppScreen(backHome: () -> Unit) {
 
 @Composable
 fun IncomingMessage(message: String) {
-    Row {
+    Row(
+        modifier = Modifier
+            .padding(start = 8.dp, end = 55.dp)
+    ) {
         Text(
-            text = message, textAlign = TextAlign.Start, fontSize = 14.sp, modifier = Modifier
-                .padding(start = 8.dp, end = 55.dp)
+            text = message,
+            textAlign = TextAlign.Start,
+            fontSize = 14.sp,
+            modifier = Modifier
                 .background(color = Color.White, shape = RoundedCornerShape(5.dp))
+                .padding(8.dp)
                 .width(350.dp)
         )
     }
-    Spacer(modifier = Modifier.size(6.dp))
+    Spacer(modifier = Modifier.size(8.dp))
 }
 
 @Composable
 fun OutgoingMessage(message: String) {
-    Row {
+    Row(
+        modifier = Modifier
+            .padding(start = 55.dp, end = 8.dp)
+    ) {
         Text(
-            text = message, textAlign = TextAlign.Start, fontSize = 14.sp, modifier = Modifier
-                .padding(start = 55.dp, end = 8.dp)
+            text = message,
+            textAlign = TextAlign.Start,
+            fontSize = 14.sp,
+            modifier = Modifier
                 .background(color = Color(231, 255, 219, 255), shape = RoundedCornerShape(5.dp))
+                .padding(8.dp)
                 .width(350.dp)
         )
     }
-    Spacer(modifier = Modifier.size(6.dp))
+    Spacer(modifier = Modifier.size(8.dp))
 }
 
 
