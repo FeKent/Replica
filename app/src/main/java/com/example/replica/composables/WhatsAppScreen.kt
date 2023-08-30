@@ -52,8 +52,14 @@ fun WhatsAppScreen(backHome: () -> Unit) {
         Column(modifier = Modifier.verticalScroll(rememberScrollState())) {
             WhatsAppBar(backHome = backHome)
             Spacer(modifier = Modifier.size(16.dp))
-            IncomingMessage(message = "The false moustache! Quelle Horreur! Never, in the whole of London, have I seen a pair of moustaches to equal mine.")
-            OutgoingMessage(message = "Oh, Mr. Poirot, remember, it's not the size of the moustache that matters, but the sharpness of the mind behind it.")
+            IncomingMessage(
+                message = "The false moustache! Quelle Horreur! Never, in the whole of London, have I seen a pair of moustaches to equal mine.",
+                time = "10:03"
+            )
+            OutgoingMessage(
+                message = "Oh, Mr. Poirot, remember, it's not the size of the moustache that matters, but the sharpness of the mind behind it.",
+                time = "10:05"
+            )
 
         }
     }
@@ -61,39 +67,73 @@ fun WhatsAppScreen(backHome: () -> Unit) {
 
 
 @Composable
-fun IncomingMessage(message: String) {
+fun IncomingMessage(message: String, time: String) {
     Row(
         modifier = Modifier
             .padding(start = 8.dp, end = 55.dp)
     ) {
-        Text(
-            text = message,
-            textAlign = TextAlign.Start,
-            fontSize = 14.sp,
+        Box(
             modifier = Modifier
                 .background(color = Color.White, shape = RoundedCornerShape(5.dp))
                 .padding(8.dp)
                 .width(350.dp)
-        )
+        ) {
+            Text(
+                text = message,
+                textAlign = TextAlign.Start,
+                fontSize = 14.sp
+            )
+            Text(
+                text = time,
+                color = Color.Gray,
+                fontSize = 12.sp,
+                fontWeight = FontWeight.SemiBold,
+                textAlign = TextAlign.Center,
+                modifier = Modifier.align(Alignment.BottomEnd)
+            )
+        }
+
     }
     Spacer(modifier = Modifier.size(8.dp))
 }
 
 @Composable
-fun OutgoingMessage(message: String) {
+fun OutgoingMessage(message: String, time: String) {
     Row(
         modifier = Modifier
             .padding(start = 55.dp, end = 8.dp)
     ) {
-        Text(
-            text = message,
-            textAlign = TextAlign.Start,
-            fontSize = 14.sp,
+        Box(
             modifier = Modifier
                 .background(color = Color(231, 255, 219, 255), shape = RoundedCornerShape(5.dp))
                 .padding(8.dp)
                 .width(350.dp)
-        )
+        ) {
+            Text(
+                text = message,
+                textAlign = TextAlign.Start,
+                fontSize = 14.sp,
+            )
+            Row(modifier = Modifier.align(Alignment.BottomEnd)) {
+                Text(
+                    text = time,
+                    color = Color.Gray,
+                    fontSize = 12.sp,
+                    fontWeight = FontWeight.SemiBold,
+                    textAlign = TextAlign.Center,
+                    modifier = Modifier.padding(top = 4.dp)
+                )
+                Spacer(modifier = Modifier.size(4.dp))
+                Icon(
+                    painter = painterResource(id = R.drawable.double_check),
+                    "Notification Check",
+                    tint = Color(20, 152, 201, 255),
+                    modifier = Modifier
+                        .size(20.dp)
+                        .padding(0.dp)
+                )
+            }
+        }
     }
     Spacer(modifier = Modifier.size(8.dp))
 }
