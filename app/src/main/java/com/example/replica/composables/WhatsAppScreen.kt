@@ -14,7 +14,9 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
@@ -24,9 +26,15 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextField
+import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.paint
@@ -34,6 +42,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.ImeAction
+import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -42,6 +52,7 @@ import com.example.replica.R
 
 @Composable
 fun WhatsAppScreen(backHome: () -> Unit) {
+    var message by remember { mutableStateOf("") }
 
     Box(modifier = with(Modifier) {
         fillMaxSize().paint(
@@ -91,11 +102,68 @@ fun WhatsAppScreen(backHome: () -> Unit) {
                     message = "Patience, precision, and a touch of empathy, Mr. Poirot. Just as threads bind a tapestry, our qualities entwine to solve even the most intricate enigmas.",
                     time = "09:02"
                 )
-
+                NewMessage(value = message, onValueChange = { message = it })
+                Spacer(modifier = Modifier.size(8.dp))
             }
         }
     }
 }
+
+@Composable
+fun NewMessage(value: String, onValueChange: (String) -> Unit) {
+    Row(modifier = Modifier.fillMaxWidth().padding(horizontal = 8.dp)) {
+        Row(
+            modifier = Modifier
+                .padding(end = 4.dp)
+                .width(350.dp)
+                .background(color = Color.White, shape = RoundedCornerShape(50.dp))
+        ) {
+            Spacer(modifier = Modifier.size(4.dp))
+            Icon(
+                painter = painterResource(id = R.drawable.emoji_icon),
+                contentDescription = "Emoticon Option",
+                tint = Color(139, 152, 161, 255),
+                modifier = Modifier.align(Alignment.CenterVertically)
+            )
+            TextField(
+                value = value,
+                onValueChange = { onValueChange(it) },
+                singleLine = true,
+                label = { Text(text = "Message") },
+                keyboardOptions = KeyboardOptions(
+                    imeAction = ImeAction.Send,
+                    capitalization = KeyboardCapitalization.Sentences
+                ),
+                colors = TextFieldDefaults.textFieldColors(containerColor = Color.White, focusedIndicatorColor = Color.White, unfocusedIndicatorColor = Color.White),
+                modifier = Modifier.width(260.dp)
+            )
+            Icon(
+                painter = painterResource(id = R.drawable.file),
+                "Attach File",
+                tint = Color(139, 152, 161, 255),
+                modifier = Modifier.align(Alignment.CenterVertically)
+            )
+            Icon(
+                painter = painterResource(id = R.drawable.camera),
+                "Take Picture",
+                tint = Color(139, 152, 161, 255),
+                modifier = Modifier.align(Alignment.CenterVertically)
+            )
+        }
+        Icon(
+            painter = painterResource(id = R.drawable.microphone),
+            "Take Picture",
+            tint = Color.White,
+            modifier = Modifier
+                .align(Alignment.CenterVertically)
+                .background(color = Color(0, 168, 132, 255), shape = CircleShape)
+                .padding(10.dp)
+        )
+    }
+
+
+}
+
 
 @Composable
 fun TimeStamp(date: String) {
@@ -135,7 +203,7 @@ fun IncomingMessage(message: String, time: String) {
                 fontSize = 16.sp,
                 lineHeight = 16.sp,
 
-            )
+                )
             Text(
                 text = time,
                 color = Color.Gray,
