@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -54,64 +55,80 @@ import com.example.replica.R
 fun WhatsAppScreen(backHome: () -> Unit) {
     var message by remember { mutableStateOf("") }
 
-    Box(modifier = with(Modifier) {
-        fillMaxSize().paint(
-            painterResource(R.drawable.whatsapp_background),
-            contentScale = ContentScale.FillBounds
-        )
-    }) {
-        Column {
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .paint(
+                painterResource(R.drawable.whatsapp_background),
+                contentScale = ContentScale.FillBounds
+            )
+    ) {
+        Column(
+            modifier = Modifier
+                .fillMaxHeight()
+                .padding(bottom = 8.dp)
+        ) {
             WhatsAppBar(backHome = backHome)
-            Column(modifier = Modifier.verticalScroll(rememberScrollState())) {
-                Spacer(modifier = Modifier.size(4.dp))
-                TimeStamp(date = "Monday")
-                IncomingMessage(
-                    message = "The false moustache! Quelle Horreur! Never, in the whole of London, have I seen a pair of moustaches to equal mine.",
-                    time = "10:03"
-                )
-                OutgoingMessage(
-                    message = "Oh, Mr. Poirot, remember, it's not the size of the moustache that matters, but the sharpness of the mind behind it.",
-                    time = "10:05"
-                )
-                IncomingMessage(
-                    message = "Ah, Miss Marple, your wisdom always shines brighter than the most polished waxed tips. Indeed, it is the little grey cells that truly distinguish a detective, not the follicular extravagance.",
-                    time = "10:08"
-                )
-                OutgoingMessage(
-                    message = "Quite right, Mr. Poirot. Just as a well-trimmed garden reveals hidden beauty, so does a keen intellect uncover the truth amidst the thickest of mysteries.",
-                    time = "10:13"
-                )
-                TimeStamp(date = "Today")
-                IncomingMessage(
-                    message = "My dear Miss Marple, a perplexing case has crossed my path. The disappearance of Lady Fotherington's priceless pearls leaves me intrigued.",
-                    time = "08:23"
-                )
-                OutgoingMessage(
-                    message = "Ah, Mr. Poirot, pearls may be lustrous, but they can also hide secrets within their layers. Remember, it's often the most unassuming oyster that holds the key.",
-                    time = "08:48"
-                )
-                IncomingMessage(
-                    message = "Très vrai, Miss Marple. Just as a diamond's facets reflect light, so must we examine every angle to reveal the hidden facets of truth.",
-                    time = "08:57"
-                )
-                IncomingMessage(
-                    message = "The parallels in our methods never cease to amaze me, Miss Marple. In pearls and puzzles alike, it is the patience and precision that lead to revelations.",
-                    time = "08:59"
-                )
-                OutgoingMessage(
-                    message = "Patience, precision, and a touch of empathy, Mr. Poirot. Just as threads bind a tapestry, our qualities entwine to solve even the most intricate enigmas.",
-                    time = "09:02"
-                )
-                NewMessage(value = message, onValueChange = { message = it })
-                Spacer(modifier = Modifier.size(8.dp))
+            Column(
+                modifier = Modifier
+                    .weight(1f)
+                    .verticalScroll(rememberScrollState())
+            ) {
+                Column {
+                    TimeStamp(date = "Monday")
+                    IncomingMessage(
+                        message = "The false moustache! Quelle Horreur! Never, in the whole of London, have I seen a pair of moustaches to equal mine.",
+                        time = "10:03"
+                    )
+                    OutgoingMessage(
+                        message = "Oh, Mr. Poirot, remember, it's not the size of the moustache that matters, but the sharpness of the mind behind it.",
+                        time = "10:05"
+                    )
+                    IncomingMessage(
+                        message = "Ah, Miss Marple, your wisdom always shines brighter than the most polished waxed tips. Indeed, it is the little grey cells that truly distinguish a detective, not the follicular extravagance.",
+                        time = "10:08"
+                    )
+                    OutgoingMessage(
+                        message = "Quite right, Mr. Poirot. Just as a well-trimmed garden reveals hidden beauty, so does a keen intellect uncover the truth amidst the thickest of mysteries.",
+                        time = "10:13"
+                    )
+                    TimeStamp(date = "Today")
+                    IncomingMessage(
+                        message = "My dear Miss Marple, a perplexing case has crossed my path. The disappearance of Lady Fotherington's priceless pearls leaves me intrigued.",
+                        time = "08:23"
+                    )
+                    OutgoingMessage(
+                        message = "Ah, Mr. Poirot, pearls may be lustrous, but they can also hide secrets within their layers. Remember, it's often the most unassuming oyster that holds the key.",
+                        time = "08:48"
+                    )
+                    IncomingMessage(
+                        message = "Très vrai, Miss Marple. Just as a diamond's facets reflect light, so must we examine every angle to reveal the hidden facets of truth.",
+                        time = "08:57"
+                    )
+                    IncomingMessage(
+                        message = "The parallels in our methods never cease to amaze me, Miss Marple. In pearls and puzzles alike, it is the patience and precision that lead to revelations.",
+                        time = "08:59"
+                    )
+                    OutgoingMessage(
+                        message = "Patience, precision, and a touch of empathy, Mr. Poirot. Just as threads bind a tapestry, our qualities entwine to solve even the most intricate enigmas.",
+                        time = "09:02"
+                    )
+                }
+                Spacer(modifier = Modifier.weight(1f))
             }
+            NewMessage(value = message, onValueChange = { message = it })
         }
     }
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun NewMessage(value: String, onValueChange: (String) -> Unit) {
-    Row(modifier = Modifier.fillMaxWidth().padding(horizontal = 8.dp)) {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(horizontal = 8.dp)
+    ) {
         Row(
             modifier = Modifier
                 .padding(end = 4.dp)
@@ -134,7 +151,11 @@ fun NewMessage(value: String, onValueChange: (String) -> Unit) {
                     imeAction = ImeAction.Send,
                     capitalization = KeyboardCapitalization.Sentences
                 ),
-                colors = TextFieldDefaults.textFieldColors(containerColor = Color.White, focusedIndicatorColor = Color.White, unfocusedIndicatorColor = Color.White),
+                colors = TextFieldDefaults.textFieldColors(
+                    containerColor = Color.White,
+                    focusedIndicatorColor = Color.White,
+                    unfocusedIndicatorColor = Color.White
+                ),
                 modifier = Modifier.width(260.dp)
             )
             Icon(
@@ -160,8 +181,6 @@ fun NewMessage(value: String, onValueChange: (String) -> Unit) {
                 .padding(10.dp)
         )
     }
-
-
 }
 
 
