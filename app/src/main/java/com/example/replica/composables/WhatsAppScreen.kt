@@ -219,7 +219,7 @@ fun IncomingMessage(message: String, time: String) {
         Box(
             modifier = Modifier
                 .background(color = Color.White, shape = RoundedCornerShape(5.dp))
-                .padding(8.dp)
+                .padding(8.dp, bottom = 4.dp)
                 .weight(1f)
         ) {
             Column {
@@ -254,7 +254,7 @@ fun OutgoingMessage(message: String, time: String) {
         Box(
             modifier = Modifier
                 .background(color = Color(231, 255, 219, 255), shape = RoundedCornerShape(5.dp))
-                .padding(8.dp)
+                .padding(8.dp, bottom = 4.dp)
                 .weight(1f)
         ) {
             Column {
