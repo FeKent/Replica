@@ -2,6 +2,7 @@
 
 package com.example.replica.composables
 
+import android.content.res.Configuration
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -46,6 +47,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.replica.R
@@ -133,7 +135,7 @@ fun NewMessage(value: String, onValueChange: (String) -> Unit) {
         Row(
             modifier = Modifier
                 .padding(end = 4.dp)
-                .width(350.dp)
+                .weight(1f)
                 .background(color = Color.White, shape = RoundedCornerShape(50.dp))
         ) {
             Spacer(modifier = Modifier.size(4.dp))
@@ -157,7 +159,7 @@ fun NewMessage(value: String, onValueChange: (String) -> Unit) {
                     focusedIndicatorColor = Color.White,
                     unfocusedIndicatorColor = Color.White
                 ),
-                modifier = Modifier.width(260.dp)
+                modifier = Modifier.weight(1f)
             )
             Icon(
                 painter = painterResource(id = R.drawable.file),
@@ -171,6 +173,7 @@ fun NewMessage(value: String, onValueChange: (String) -> Unit) {
                 tint = Color(139, 152, 161, 255),
                 modifier = Modifier.align(Alignment.CenterVertically)
             )
+            Spacer(modifier = Modifier.size(4.dp))
         }
         Icon(
             painter = painterResource(id = R.drawable.microphone),
@@ -333,4 +336,36 @@ fun WhatsAppBar(backHome: () -> Unit) {
         ),
         modifier = Modifier.background(color = Color.LightGray)
     )
+}
+
+@Preview
+@Composable
+fun WhatsAppScreenPreview() {
+    WhatsAppScreen {
+
+    }
+}
+
+@Preview(widthDp = 360, heightDp = 500)
+@Composable
+fun WhatsAppScreenPreviewShort() {
+    WhatsAppScreen {
+
+    }
+}
+
+@Preview(uiMode = Configuration.UI_MODE_NIGHT_YES)
+@Composable
+fun WhatsAppPreviewDarkMode() {
+    WhatsAppScreen {
+
+    }
+}
+
+@Preview(fontScale = 2f)
+@Composable
+fun WhatsAppPreviewFontScale() {
+    WhatsAppScreen {
+
+    }
 }
