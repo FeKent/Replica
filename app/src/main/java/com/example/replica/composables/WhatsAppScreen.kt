@@ -196,6 +196,7 @@ fun TimeStamp(date: String) {
             text = date,
             fontSize = 14.sp,
             fontWeight = FontWeight.SemiBold,
+            color = Color(86, 100, 108),
             modifier = Modifier
                 .background(Color(247, 247, 247, 255), shape = RoundedCornerShape(4.dp))
                 .padding(4.dp)
@@ -222,7 +223,7 @@ fun IncomingMessage(message: String, time: String) {
                 textAlign = TextAlign.Start,
                 fontSize = 16.sp,
                 lineHeight = 16.sp,
-
+                color = Color.Black
                 )
             Text(
                 text = time,
@@ -254,7 +255,8 @@ fun OutgoingMessage(message: String, time: String) {
                 text = message,
                 textAlign = TextAlign.Start,
                 fontSize = 16.sp,
-                lineHeight = 16.sp
+                lineHeight = 16.sp,
+                color = Color.Black
             )
             Row(modifier = Modifier.align(Alignment.BottomEnd)) {
                 Text(
