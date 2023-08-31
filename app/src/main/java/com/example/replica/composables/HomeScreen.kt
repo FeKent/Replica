@@ -98,7 +98,6 @@ fun HomeScreen(ynabScreen: () -> Unit, whatsAppScreen: () ->Unit) {
                 }
             }
         }
-
     }
 }
 

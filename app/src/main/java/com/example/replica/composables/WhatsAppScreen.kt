@@ -5,6 +5,7 @@ package com.example.replica.composables
 import android.content.res.Configuration
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -14,7 +15,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -222,23 +222,25 @@ fun IncomingMessage(message: String, time: String) {
                 .padding(8.dp)
                 .weight(1f)
         ) {
-            Text(
-                text = message,
-                textAlign = TextAlign.Start,
-                fontSize = 16.sp,
-                lineHeight = 16.sp,
-                color = Color.Black
+            Column {
+                Text(
+                    text = message,
+                    textAlign = TextAlign.Start,
+                    fontSize = 16.sp,
+                    lineHeight = 16.sp,
+                    color = Color.Black
                 )
-            Text(
-                text = time,
-                color = Color.Gray,
-                fontSize = 12.sp,
-                fontWeight = FontWeight.SemiBold,
-                textAlign = TextAlign.Center,
-                modifier = Modifier.align(Alignment.BottomEnd)
-            )
+                Row(horizontalArrangement = Arrangement.End, modifier = Modifier.fillMaxWidth()) {
+                    Text(
+                        text = time,
+                        color = Color.Gray,
+                        fontSize = 12.sp,
+                        fontWeight = FontWeight.SemiBold,
+                        textAlign = TextAlign.End,
+                    )
+                }
+            }
         }
-
     }
     Spacer(modifier = Modifier.size(8.dp))
 }
@@ -255,31 +257,33 @@ fun OutgoingMessage(message: String, time: String) {
                 .padding(8.dp)
                 .weight(1f)
         ) {
-            Text(
-                text = message,
-                textAlign = TextAlign.Start,
-                fontSize = 16.sp,
-                lineHeight = 16.sp,
-                color = Color.Black
-            )
-            Row(modifier = Modifier.align(Alignment.BottomEnd)) {
+            Column {
                 Text(
-                    text = time,
-                    color = Color.Gray,
-                    fontSize = 12.sp,
-                    fontWeight = FontWeight.SemiBold,
-                    textAlign = TextAlign.Center,
-                    modifier = Modifier.padding(top = 4.dp)
+                    text = message,
+                    textAlign = TextAlign.Start,
+                    fontSize = 16.sp,
+                    lineHeight = 16.sp,
+                    color = Color.Black
                 )
-                Spacer(modifier = Modifier.size(4.dp))
-                Icon(
-                    painter = painterResource(id = R.drawable.double_check),
-                    "Notification Check",
-                    tint = Color(20, 152, 201, 255),
-                    modifier = Modifier
-                        .size(20.dp)
-                        .padding(0.dp)
-                )
+                Row(horizontalArrangement = Arrangement.End, modifier = Modifier.fillMaxWidth()) {
+                    Text(
+                        text = time,
+                        color = Color.Gray,
+                        fontSize = 12.sp,
+                        fontWeight = FontWeight.SemiBold,
+                        textAlign = TextAlign.End,
+                        modifier = Modifier.padding(top = 4.dp)
+                    )
+                    Spacer(modifier = Modifier.size(4.dp))
+                    Icon(
+                        painter = painterResource(id = R.drawable.double_check),
+                        "Notification Check",
+                        tint = Color(20, 152, 201, 255),
+                        modifier = Modifier
+                            .size(20.dp)
+                            .padding(0.dp)
+                    )
+                }
             }
         }
     }
