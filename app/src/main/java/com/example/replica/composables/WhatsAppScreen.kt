@@ -47,6 +47,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -219,7 +220,7 @@ fun IncomingMessage(message: String, time: String) {
             modifier = Modifier
                 .background(color = Color.White, shape = RoundedCornerShape(5.dp))
                 .padding(8.dp)
-                .width(350.dp)
+                .weight(1f)
         ) {
             Text(
                 text = message,
@@ -252,7 +253,7 @@ fun OutgoingMessage(message: String, time: String) {
             modifier = Modifier
                 .background(color = Color(231, 255, 219, 255), shape = RoundedCornerShape(5.dp))
                 .padding(8.dp)
-                .width(350.dp)
+                .weight(1f)
         ) {
             Text(
                 text = message,
@@ -305,6 +306,8 @@ fun WhatsAppBar(backHome: () -> Unit) {
                     text = "Hercule Poirot",
                     color = Color.White,
                     fontWeight = FontWeight.SemiBold,
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis,
                     modifier = Modifier.fillMaxWidth(1f)
                 )
 
