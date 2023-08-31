@@ -124,6 +124,7 @@ fun WhatsAppScreen(backHome: () -> Unit) {
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun NewMessage(value: String, onValueChange: (String) -> Unit) {
+    Spacer(modifier = Modifier.size(6.dp))
     Row(
         modifier = Modifier
             .fillMaxWidth()
