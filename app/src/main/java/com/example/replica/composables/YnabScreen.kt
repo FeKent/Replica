@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -124,9 +125,18 @@ fun CategoryRow(label: String, category: String, categoryAmount: String) {
     Row(modifier = Modifier.padding(vertical = 8.dp)) {
         Text(text = label, color = Color.Gray, fontWeight = FontWeight.Medium)
         Spacer(modifier = Modifier.size(16.dp))
-        Text(text = category, fontWeight = FontWeight.Bold, modifier = Modifier.weight(1f), textAlign = TextAlign.End)
+        Text(
+            text = category,
+            fontWeight = FontWeight.Bold,
+            modifier = Modifier.weight(1f),
+            textAlign = TextAlign.End
+        )
         Spacer(modifier = Modifier.size(4.dp))
-        Text(text = categoryAmount, color = Color(0, 102, 139), modifier = Modifier.widthIn(max = 120.dp))
+        Text(
+            text = categoryAmount,
+            color = Color(0, 102, 139),
+            modifier = Modifier.widthIn(max = 120.dp)
+        )
         Icon(
             Icons.Filled.KeyboardArrowRight,
             contentDescription = "Arrow Right",
@@ -137,100 +147,164 @@ fun CategoryRow(label: String, category: String, categoryAmount: String) {
 
 @Composable
 fun NumberPad() {
-    Box {
-        Column(
-            modifier = Modifier
-                .width(400.dp)
-                .padding(horizontal = 60.dp)
-        ) {
-            Row {
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(horizontal = 8.dp)
+    ) {
+        NumberPadRow(
+            {
                 Text(
                     text = "7",
                     fontSize = 20.sp,
                     color = Color.DarkGray,
-                    modifier = Modifier.weight(0.5f)
+                    modifier = Modifier.weight(1f),
+                    textAlign = TextAlign.Center
                 )
+            },
+            {
                 Text(
                     text = "8",
                     fontSize = 20.sp,
                     color = Color.DarkGray,
-                    modifier = Modifier.weight(0.5f)
+                    modifier = Modifier.weight(1f),
+                    textAlign = TextAlign.Center
                 )
+            },
+            {
                 Text(
                     text = "9",
                     fontSize = 20.sp,
                     color = Color.DarkGray,
-                    modifier = Modifier.weight(0.5f)
+                    modifier = Modifier.weight(1f),
+                    textAlign = TextAlign.Center
                 )
-            }
-            Spacer(modifier = Modifier.size(8.dp))
-            Row {
+            },
+            {
+                Spacer(modifier = Modifier.weight(1f))
+            },
+        )
+        Spacer(modifier = Modifier.size(8.dp))
+        NumberPadRow(
+            {
                 Text(
                     text = "4",
                     fontSize = 20.sp,
                     color = Color.DarkGray,
-                    modifier = Modifier.weight(0.5f)
+                    modifier = Modifier.weight(1f),
+                    textAlign = TextAlign.Center
                 )
+            },
+            {
                 Text(
                     text = "5",
                     fontSize = 20.sp,
                     color = Color.DarkGray,
-                    modifier = Modifier.weight(0.5f)
+                    modifier = Modifier.weight(1f),
+                    textAlign = TextAlign.Center
                 )
+            },
+            {
                 Text(
                     text = "6",
                     fontSize = 20.sp,
                     color = Color.DarkGray,
-                    modifier = Modifier.weight(0.5f)
+                    modifier = Modifier.weight(1f),
+                    textAlign = TextAlign.Center
                 )
-            }
-            Spacer(modifier = Modifier.size(8.dp))
-            Row {
+            },
+            {
+                Spacer(modifier = Modifier.weight(1f))
+            },
+        )
+        Spacer(modifier = Modifier.size(8.dp))
+        NumberPadRow(
+            {
                 Text(
                     text = "1",
                     fontSize = 20.sp,
                     color = Color.DarkGray,
-                    modifier = Modifier.weight(0.5f)
+                    modifier = Modifier.weight(1f),
+                    textAlign = TextAlign.Center
                 )
+            },
+            {
                 Text(
                     text = "2",
                     fontSize = 20.sp,
                     color = Color.DarkGray,
-                    modifier = Modifier.weight(0.5f)
+                    modifier = Modifier.weight(1f),
+                    textAlign = TextAlign.Center
                 )
+            },
+            {
                 Text(
                     text = "3",
                     fontSize = 20.sp,
                     color = Color.DarkGray,
-                    modifier = Modifier.weight(0.5f)
+                    modifier = Modifier.weight(1f),
+                    textAlign = TextAlign.Center
                 )
-            }
-            Spacer(modifier = Modifier.size(8.dp))
-            Row {
-                Text(text = "", fontSize = 20.sp, modifier = Modifier.weight(0.25f))
+            },
+            {
+                Spacer(modifier = Modifier.weight(1f))
+            },
+        )
+        Spacer(modifier = Modifier.size(8.dp))
+        NumberPadRow(
+            {
+                Text(
+                    text = "", fontSize = 20.sp, modifier = Modifier.weight(1f),
+                    textAlign = TextAlign.Center
+                )
+            },
+            {
                 Text(
                     text = "0",
                     fontSize = 20.sp,
                     color = Color.DarkGray,
-                    modifier = Modifier.weight(0.25f)
+                    modifier = Modifier.weight(1f),
+                    textAlign = TextAlign.Center
                 )
+            },
+            {
                 Image(
                     painter = painterResource(R.drawable.backspace),
-                    alignment = Alignment.BottomStart,
+                    alignment = Alignment.Center,
                     contentDescription = "Backspace Button",
                     modifier = Modifier
                         .size(20.dp)
-                        .weight(0.25f)
+                        .weight(1f)
                         .clickable { /*Todo*/ }
 
                 )
+            },
+            {
+                Button(onClick = { /*TODO*/ }, modifier = Modifier.weight(1f)) {
+                    Text(text = "Done")
+                }
             }
-        }
-        Button(onClick = { /*TODO*/ }, modifier = Modifier.align(Alignment.BottomEnd)) {
-            Text(text = "Done")
-        }
+        )
     }
+}
 
+@Composable
+fun NumberPadRow(
+    col1: @Composable () -> Unit,
+    col2: @Composable () -> Unit,
+    col3: @Composable () -> Unit,
+    col4: @Composable () -> Unit,
+    modifier: Modifier = Modifier,
+) {
+    Row(
+        modifier = modifier.heightIn(min = 48.dp),
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        col1()
+        col2()
+        col3()
+        col4()
+    }
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
