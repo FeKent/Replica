@@ -93,44 +93,19 @@ fun YnabScreen(
                 )
                 Spacer(modifier = Modifier.size(16.dp))
                 Column {
-                    Row(modifier = Modifier.padding(vertical = 8.dp)) {
-                        Text(text = "From:", color = Color.Gray, fontWeight = FontWeight.Medium)
-                        Row(
-                            horizontalArrangement = Arrangement.End,
-                            modifier = Modifier.fillMaxWidth()
-                        ) {
-                            Spacer(modifier = Modifier.size(16.dp))
-                            Text(text = viewState.fromCategory, fontWeight = FontWeight.Bold)
-                            Spacer(modifier = Modifier.size(4.dp))
-                            Text(text = viewState.fromCategoryAmount, color = Color(0, 102, 139))
-                            Icon(
-                                Icons.Filled.KeyboardArrowRight,
-                                contentDescription = "Arrow Right",
-                                tint = Color.Gray
-                            )
-                        }
-
-                    }
+                    CategoryRow(
+                        label = "From:",
+                        category = viewState.fromCategory,
+                        categoryAmount = viewState.fromCategoryAmount
+                    )
                     Spacer(modifier = Modifier.size(4.dp))
                     Divider()
                     Spacer(modifier = Modifier.size(4.dp))
-                    Row(modifier = Modifier.padding(vertical = 8.dp)) {
-                        Text(text = "To:", color = Color.Gray, fontWeight = FontWeight.Medium)
-                        Row(
-                            horizontalArrangement = Arrangement.End,
-                            modifier = Modifier.fillMaxWidth()
-                        ) {
-                            Spacer(modifier = Modifier.size(16.dp))
-                            Text(text = viewState.toCategory, fontWeight = FontWeight.Bold)
-                            Spacer(modifier = Modifier.size(4.dp))
-                            Text(text = viewState.toCategoryAmount, color = Color(0, 102, 139))
-                            Icon(
-                                Icons.Filled.KeyboardArrowRight,
-                                contentDescription = "Arrow Right",
-                                tint = Color.Gray
-                            )
-                        }
-                    }
+                    CategoryRow(
+                        label = "To:",
+                        category = viewState.toCategory,
+                        categoryAmount = viewState.toCategoryAmount
+                    )
                 }
             }
             Spacer(modifier = Modifier.size(4.dp))
@@ -140,6 +115,28 @@ fun YnabScreen(
             Spacer(modifier = Modifier.size(16.dp))
             Divider()
         }
+    }
+}
+
+@Composable
+fun CategoryRow(label: String, category: String, categoryAmount: String) {
+    Row(modifier = Modifier.padding(vertical = 8.dp)) {
+        Text(text = label, color = Color.Gray, fontWeight = FontWeight.Medium)
+        Row(
+            horizontalArrangement = Arrangement.End,
+            modifier = Modifier.fillMaxWidth()
+        ) {
+            Spacer(modifier = Modifier.size(16.dp))
+            Text(text = category, fontWeight = FontWeight.Bold)
+            Spacer(modifier = Modifier.size(4.dp))
+            Text(text = categoryAmount, color = Color(0, 102, 139))
+            Icon(
+                Icons.Filled.KeyboardArrowRight,
+                contentDescription = "Arrow Right",
+                tint = Color.Gray
+            )
+        }
+
     }
 }
 
