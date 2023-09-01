@@ -280,15 +280,7 @@ fun NumberPad() {
         )
         NumberPadRow(
             {
-                TextButton(
-                    {},
-                    modifier = Modifier.weight(1f),
-                ) {
-                    Text(
-                        text = "", fontSize = 20.sp,
-                        textAlign = TextAlign.Center
-                    )
-                }
+                Spacer(modifier = Modifier.weight(1f))
             },
             {
                 TextButton(
