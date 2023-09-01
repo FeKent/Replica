@@ -24,6 +24,7 @@ import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.Divider
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -39,8 +40,10 @@ import androidx.compose.ui.unit.sp
 import com.example.replica.R
 
 @Composable
-fun YnabScreen(backHome: () -> Unit,) {
-    Column(modifier = Modifier.fillMaxSize(1f).background(Color.White)) {
+fun YnabScreen(backHome: () -> Unit) {
+    Column(modifier = Modifier
+        .fillMaxSize(1f)
+        .background(Color.White)) {
         ElevatedCenterAlignedTopAppBar(backHome = backHome)
         Divider(color = Color.LightGray)
         Spacer(modifier = Modifier.size(16.dp))
@@ -226,7 +229,7 @@ fun NumberPad() {
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun ElevatedCenterAlignedTopAppBar(backHome: ()-> Unit) {
+fun ElevatedCenterAlignedTopAppBar(backHome: () -> Unit) {
     Surface(shadowElevation = 6.dp, modifier = Modifier.fillMaxWidth()) {
         CenterAlignedTopAppBar(
             title = {
@@ -238,9 +241,11 @@ fun ElevatedCenterAlignedTopAppBar(backHome: ()-> Unit) {
                 )
             },
             navigationIcon = {
-                Icon(Icons.Filled.Close, "Close", tint = Color(0, 102, 139), modifier = Modifier
-                    .clickable { backHome() }
-                    .size(40.dp))
+                IconButton({}) {
+                    Icon(Icons.Filled.Close, "Close", tint = Color(0, 102, 139), modifier = Modifier
+                        .clickable { backHome() }
+                    )
+                }
             })
     }
 }
