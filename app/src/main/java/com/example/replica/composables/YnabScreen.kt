@@ -273,3 +273,18 @@ fun ElevatedCenterAlignedTopAppBar(backHome: () -> Unit) {
 private fun PreviewLight() {
     YnabScreen({})
 }
+
+@Preview()
+@Composable
+private fun PreviewLongStrings() {
+    YnabScreen(
+        {},
+        viewState = YnabScreenViewState(
+            moveAmount = "$1,000,000,000,000,000.00",
+            fromCategory = "🙌 This is my favorite category so I described it with lots of words",
+            fromCategoryAmount = "$1,230.23",
+            toCategory = "Short cat",
+            toCategoryAmount = "$500,000,000,000,000,000,000,000,000,000.00",
+        )
+    )
+}
