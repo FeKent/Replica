@@ -15,6 +15,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.layout.wrapContentSize
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.KeyboardArrowRight
@@ -313,7 +314,8 @@ fun NumberPad() {
                 Button(
                     onClick = { /*TODO*/ },
                     modifier = Modifier.weight(1f),
-                    colors = ButtonDefaults.buttonColors(containerColor = Color("#00668B".toColorInt()))
+                    colors = ButtonDefaults.buttonColors(containerColor = Color("#00668B".toColorInt())),
+                    shape = RoundedCornerShape(4.dp)
                 ) {
                     Text(text = "Done", style = LocalTextStyle.current.copy(color = Color.White))
                 }
