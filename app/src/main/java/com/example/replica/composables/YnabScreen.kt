@@ -87,7 +87,7 @@ fun YnabScreen(
             Row {
                 Image(
                     painter = painterResource(R.drawable.compare_arrows),
-                    contentDescription = "Comparison Arrows",
+                    contentDescription = "Swap categories",
                     modifier = Modifier
                         .align(Alignment.CenterVertically)
                         .size(40.dp)
