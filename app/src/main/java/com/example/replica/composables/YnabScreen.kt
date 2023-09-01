@@ -18,6 +18,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.layout.wrapContentSize
+import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.KeyboardArrowRight
@@ -29,6 +30,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -39,6 +41,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.core.graphics.toColorInt
 import com.example.replica.R
 
 data class YnabScreenViewState(
@@ -262,16 +265,17 @@ fun NumberPad() {
                 )
             },
             {
-                Image(
-                    painter = painterResource(R.drawable.backspace),
-                    alignment = Alignment.Center,
-                    contentDescription = "Backspace",
-                    modifier = Modifier
-                        .size(20.dp)
-                        .weight(1f)
-                        .clickable { /*Todo*/ }
+                // Bit of a hack, using text button to get clear background:
+                TextButton({}, modifier = Modifier.weight(1f)) {
+                    Icon(
+                        painter = painterResource(R.drawable.backspace),
+                        contentDescription = "Backspace",
+                        tint = Color("#00668B".toColorInt()),
+                        modifier = Modifier
+                            .clickable { /*Todo*/ }
 
-                )
+                    )
+                }
             },
             {
                 Button(onClick = { /*TODO*/ }, modifier = Modifier.weight(1f)) {
