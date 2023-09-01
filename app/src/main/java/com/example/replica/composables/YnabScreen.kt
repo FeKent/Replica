@@ -73,18 +73,14 @@ fun YnabScreen(
             fontWeight = FontWeight.Light,
             modifier = Modifier
                 .fillMaxWidth()
-                .weight(2f)
+                .weight(1f)
                 .wrapContentSize(align = Alignment.CenterEnd)
                 .padding(end = 8.dp)
 
         )
         Divider()
         Spacer(modifier = Modifier.size(4.dp))
-        Column(
-            modifier = Modifier
-                .fillMaxWidth()
-                .weight(1.3f)
-        ) {
+        Column(modifier = Modifier.fillMaxWidth()) {
             Row {
                 Image(
                     painter = painterResource(R.drawable.compare_arrows),
