@@ -45,7 +45,7 @@ fun YnabScreen(backHome: () -> Unit) {
         .fillMaxSize(1f)
         .background(Color.White)) {
         ElevatedCenterAlignedTopAppBar(backHome = backHome)
-        Divider(color = Color.LightGray)
+        Divider()
         Spacer(modifier = Modifier.size(16.dp))
         Text(
             text = "$0.00",
@@ -60,7 +60,7 @@ fun YnabScreen(backHome: () -> Unit) {
                 .padding(end = 8.dp)
 
         )
-        Divider(color = Color.LightGray)
+        Divider()
         Spacer(modifier = Modifier.size(4.dp))
         Column(
             modifier = Modifier
@@ -98,7 +98,7 @@ fun YnabScreen(backHome: () -> Unit) {
 
                     }
                     Spacer(modifier = Modifier.size(4.dp))
-                    Divider(color = Color.LightGray)
+                    Divider()
                     Spacer(modifier = Modifier.size(4.dp))
                     Row(modifier = Modifier.padding(vertical = 8.dp)) {
                         Text(text = "To:", color = Color.Gray, fontWeight = FontWeight.Medium)
@@ -120,11 +120,11 @@ fun YnabScreen(backHome: () -> Unit) {
                 }
             }
             Spacer(modifier = Modifier.size(4.dp))
-            Divider(color = Color.LightGray)
+            Divider()
             Spacer(modifier = Modifier.size(16.dp))
             NumberPad()
             Spacer(modifier = Modifier.size(16.dp))
-            Divider(color = Color.LightGray)
+            Divider()
         }
     }
 }
