@@ -39,15 +39,34 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.replica.R
 
+data class YnabScreenViewState(
+    val moveAmount: String,
+    val fromCategory: String,
+    val fromCategoryAmount: String,
+    val toCategory: String,
+    val toCategoryAmount: String,
+)
+
 @Composable
-fun YnabScreen(backHome: () -> Unit) {
-    Column(modifier = Modifier
-        .fillMaxSize(1f)
-        .background(Color.White)) {
+fun YnabScreen(
+    backHome: () -> Unit,
+    viewState: YnabScreenViewState = YnabScreenViewState(
+        moveAmount = "$0.00",
+        fromCategory = "Ready to Assign",
+        fromCategoryAmount = "$1230.23",
+        toCategory = "Uncat Transactions",
+        toCategoryAmount = "$50.00",
+    ),
+) {
+    Column(
+        modifier = Modifier
+            .fillMaxSize(1f)
+            .background(Color.White)
+    ) {
         ElevatedCenterAlignedTopAppBar(backHome = backHome)
         Spacer(modifier = Modifier.size(16.dp))
         Text(
-            text = "$0.00",
+            text = viewState.moveAmount,
             color = Color(135, 187, 70, 255),
             textAlign = TextAlign.End,
             fontSize = 60.sp,
@@ -85,9 +104,9 @@ fun YnabScreen(backHome: () -> Unit) {
                             modifier = Modifier.fillMaxWidth()
                         ) {
                             Spacer(modifier = Modifier.size(16.dp))
-                            Text(text = "Ready to Assign", fontWeight = FontWeight.Bold)
+                            Text(text = viewState.fromCategory, fontWeight = FontWeight.Bold)
                             Spacer(modifier = Modifier.size(4.dp))
-                            Text(text = "$1230.23", color = Color(0, 102, 139))
+                            Text(text = viewState.fromCategoryAmount, color = Color(0, 102, 139))
                             Icon(
                                 Icons.Filled.KeyboardArrowRight,
                                 contentDescription = "Arrow Right",
@@ -106,9 +125,9 @@ fun YnabScreen(backHome: () -> Unit) {
                             modifier = Modifier.fillMaxWidth()
                         ) {
                             Spacer(modifier = Modifier.size(16.dp))
-                            Text(text = "Uncat Transactions", fontWeight = FontWeight.Bold)
+                            Text(text = viewState.toCategory, fontWeight = FontWeight.Bold)
                             Spacer(modifier = Modifier.size(4.dp))
-                            Text(text = "$50", color = Color(0, 102, 139))
+                            Text(text = viewState.toCategoryAmount, color = Color(0, 102, 139))
                             Icon(
                                 Icons.Filled.KeyboardArrowRight,
                                 contentDescription = "Arrow Right",
@@ -252,5 +271,5 @@ fun ElevatedCenterAlignedTopAppBar(backHome: () -> Unit) {
 @Preview()
 @Composable
 private fun PreviewLight() {
-    YnabScreen {}
+    YnabScreen({})
 }
