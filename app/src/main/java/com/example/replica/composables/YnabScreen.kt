@@ -15,6 +15,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Close
@@ -122,21 +123,15 @@ fun YnabScreen(
 fun CategoryRow(label: String, category: String, categoryAmount: String) {
     Row(modifier = Modifier.padding(vertical = 8.dp)) {
         Text(text = label, color = Color.Gray, fontWeight = FontWeight.Medium)
-        Row(
-            horizontalArrangement = Arrangement.End,
-            modifier = Modifier.fillMaxWidth()
-        ) {
-            Spacer(modifier = Modifier.size(16.dp))
-            Text(text = category, fontWeight = FontWeight.Bold)
-            Spacer(modifier = Modifier.size(4.dp))
-            Text(text = categoryAmount, color = Color(0, 102, 139))
-            Icon(
-                Icons.Filled.KeyboardArrowRight,
-                contentDescription = "Arrow Right",
-                tint = Color.Gray
-            )
-        }
-
+        Spacer(modifier = Modifier.size(16.dp))
+        Text(text = category, fontWeight = FontWeight.Bold, modifier = Modifier.weight(1f), textAlign = TextAlign.End)
+        Spacer(modifier = Modifier.size(4.dp))
+        Text(text = categoryAmount, color = Color(0, 102, 139), modifier = Modifier.widthIn(max = 120.dp))
+        Icon(
+            Icons.Filled.KeyboardArrowRight,
+            contentDescription = "Arrow Right",
+            tint = Color.Gray
+        )
     }
 }
 
