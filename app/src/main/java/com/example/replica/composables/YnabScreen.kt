@@ -28,14 +28,17 @@ import androidx.compose.material3.Divider
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.LocalTextStyle
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -161,8 +164,6 @@ fun NumberPad() {
                     Text(
                         text = "7",
                         fontSize = 20.sp,
-                        color = Color.DarkGray,
-                        modifier = Modifier.weight(1f),
                         textAlign = TextAlign.Center
                     )
                 }
@@ -175,8 +176,6 @@ fun NumberPad() {
                     Text(
                         text = "8",
                         fontSize = 20.sp,
-                        color = Color.DarkGray,
-                        modifier = Modifier.weight(1f),
                         textAlign = TextAlign.Center
                     )
                 }
@@ -189,8 +188,6 @@ fun NumberPad() {
                     Text(
                         text = "9",
                         fontSize = 20.sp,
-                        color = Color.DarkGray,
-                        modifier = Modifier.weight(1f),
                         textAlign = TextAlign.Center
                     )
                 }
@@ -208,8 +205,6 @@ fun NumberPad() {
                     Text(
                         text = "4",
                         fontSize = 20.sp,
-                        color = Color.DarkGray,
-                        modifier = Modifier.weight(1f),
                         textAlign = TextAlign.Center
                     )
                 }
@@ -222,8 +217,6 @@ fun NumberPad() {
                     Text(
                         text = "5",
                         fontSize = 20.sp,
-                        color = Color.DarkGray,
-                        modifier = Modifier.weight(1f),
                         textAlign = TextAlign.Center
                     )
                 }
@@ -236,8 +229,6 @@ fun NumberPad() {
                     Text(
                         text = "6",
                         fontSize = 20.sp,
-                        color = Color.DarkGray,
-                        modifier = Modifier.weight(1f),
                         textAlign = TextAlign.Center
                     )
                 }
@@ -255,7 +246,6 @@ fun NumberPad() {
                     Text(
                         text = "1",
                         fontSize = 20.sp,
-                        color = Color.DarkGray,
                         textAlign = TextAlign.Center
                     )
                 }
@@ -268,8 +258,6 @@ fun NumberPad() {
                     Text(
                         text = "2",
                         fontSize = 20.sp,
-                        color = Color.DarkGray,
-                        modifier = Modifier.weight(1f),
                         textAlign = TextAlign.Center
                     )
                 }
@@ -282,8 +270,6 @@ fun NumberPad() {
                     Text(
                         text = "3",
                         fontSize = 20.sp,
-                        color = Color.DarkGray,
-                        modifier = Modifier.weight(1f),
                         textAlign = TextAlign.Center
                     )
                 }
@@ -299,7 +285,7 @@ fun NumberPad() {
                     modifier = Modifier.weight(1f),
                 ) {
                     Text(
-                        text = "", fontSize = 20.sp, modifier = Modifier.weight(1f),
+                        text = "", fontSize = 20.sp,
                         textAlign = TextAlign.Center
                     )
                 }
@@ -312,8 +298,6 @@ fun NumberPad() {
                     Text(
                         text = "0",
                         fontSize = 20.sp,
-                        color = Color.DarkGray,
-                        modifier = Modifier.weight(1f),
                         textAlign = TextAlign.Center
                     )
                 }
@@ -333,7 +317,7 @@ fun NumberPad() {
             },
             {
                 Button(onClick = { /*TODO*/ }, modifier = Modifier.weight(1f)) {
-                    Text(text = "Done")
+                    Text(text = "Done", style = LocalTextStyle.current.copy(color = Color.White))
                 }
             }
         )
@@ -348,14 +332,19 @@ fun NumberPadRow(
     col4: @Composable () -> Unit,
     modifier: Modifier = Modifier,
 ) {
-    Row(
-        modifier = modifier.heightIn(min = 48.dp),
-        verticalAlignment = Alignment.CenterVertically
+    CompositionLocalProvider(
+        LocalTextStyle provides LocalTextStyle.current.copy(color = Color.DarkGray),
     ) {
-        col1()
-        col2()
-        col3()
-        col4()
+
+        Row(
+            modifier = modifier.heightIn(min = 48.dp),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            col1()
+            col2()
+            col3()
+            col4()
+        }
     }
 }
 
