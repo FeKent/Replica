@@ -42,7 +42,7 @@ import com.example.replica.R
 @Composable
 fun HomeScreen(ynabScreen: () -> Unit, whatsAppScreen: () ->Unit) {
     val uriHandler = LocalUriHandler.current
-    val portfolioLink = "https://github.com/SnippyRex"
+    val portfolioLink = "https://github.com/FeKent"
 
     Column(modifier = Modifier.fillMaxSize()) {
         ElevatedBar(title = {
