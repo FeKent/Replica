@@ -3,6 +3,7 @@
 package com.example.replica.composables
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -39,7 +40,7 @@ import com.example.replica.R
 
 @Composable
 fun YnabScreen(backHome: () -> Unit,) {
-    Column(modifier = Modifier.fillMaxSize(1f)) {
+    Column(modifier = Modifier.fillMaxSize(1f).background(Color.White)) {
         ElevatedCenterAlignedTopAppBar(backHome = backHome)
         Divider(color = Color.LightGray)
         Spacer(modifier = Modifier.size(16.dp))
