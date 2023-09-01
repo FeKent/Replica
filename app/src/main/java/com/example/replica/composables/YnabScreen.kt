@@ -265,7 +265,7 @@ fun NumberPad() {
                 Image(
                     painter = painterResource(R.drawable.backspace),
                     alignment = Alignment.Center,
-                    contentDescription = "Backspace Button",
+                    contentDescription = "Backspace",
                     modifier = Modifier
                         .size(20.dp)
                         .weight(1f)
