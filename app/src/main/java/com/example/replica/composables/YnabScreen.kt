@@ -19,6 +19,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.KeyboardArrowRight
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.Divider
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -309,7 +310,11 @@ fun NumberPad() {
                 }
             },
             {
-                Button(onClick = { /*TODO*/ }, modifier = Modifier.weight(1f)) {
+                Button(
+                    onClick = { /*TODO*/ },
+                    modifier = Modifier.weight(1f),
+                    colors = ButtonDefaults.buttonColors(containerColor = Color("#00668B".toColorInt()))
+                ) {
                     Text(text = "Done", style = LocalTextStyle.current.copy(color = Color.White))
                 }
             }
