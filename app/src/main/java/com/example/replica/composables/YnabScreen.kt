@@ -99,7 +99,8 @@ fun YnabScreen(
                     CategoryRow(
                         label = "From:",
                         category = viewState.fromCategory,
-                        categoryAmount = viewState.fromCategoryAmount
+                        categoryAmount = viewState.fromCategoryAmount,
+                        onClick = {},
                     )
                     Spacer(modifier = Modifier.size(4.dp))
                     Divider()
@@ -107,7 +108,8 @@ fun YnabScreen(
                     CategoryRow(
                         label = "To:",
                         category = viewState.toCategory,
-                        categoryAmount = viewState.toCategoryAmount
+                        categoryAmount = viewState.toCategoryAmount,
+                        onClick = {},
                     )
                 }
             }
@@ -119,8 +121,12 @@ fun YnabScreen(
 }
 
 @Composable
-fun CategoryRow(label: String, category: String, categoryAmount: String) {
-    Row(modifier = Modifier.padding(vertical = 8.dp)) {
+fun CategoryRow(label: String, category: String, categoryAmount: String, onClick: () -> Unit) {
+    Row(
+        modifier = Modifier
+            .clickable(onClick = onClick)
+            .padding(vertical = 8.dp)
+    ) {
         Text(text = label, color = Color.Gray, fontWeight = FontWeight.Medium)
         Spacer(modifier = Modifier.size(16.dp))
         Text(
@@ -137,7 +143,7 @@ fun CategoryRow(label: String, category: String, categoryAmount: String) {
         )
         Icon(
             Icons.Filled.KeyboardArrowRight,
-            contentDescription = "Arrow Right",
+            contentDescription = null,
             tint = Color.Gray
         )
     }
