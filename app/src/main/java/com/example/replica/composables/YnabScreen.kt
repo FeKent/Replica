@@ -45,7 +45,6 @@ fun YnabScreen(backHome: () -> Unit) {
         .fillMaxSize(1f)
         .background(Color.White)) {
         ElevatedCenterAlignedTopAppBar(backHome = backHome)
-        Divider()
         Spacer(modifier = Modifier.size(16.dp))
         Text(
             text = "$0.00",
