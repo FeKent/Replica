@@ -112,10 +112,7 @@ fun YnabScreen(
             }
             Spacer(modifier = Modifier.size(4.dp))
             Divider()
-            Spacer(modifier = Modifier.size(16.dp))
             NumberPad()
-            Spacer(modifier = Modifier.size(16.dp))
-            Divider()
         }
     }
 }
@@ -150,7 +147,7 @@ fun NumberPad() {
     Column(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(horizontal = 8.dp)
+            .padding(8.dp)
     ) {
         NumberPadRow(
             {
@@ -184,7 +181,6 @@ fun NumberPad() {
                 Spacer(modifier = Modifier.weight(1f))
             },
         )
-        Spacer(modifier = Modifier.size(8.dp))
         NumberPadRow(
             {
                 Text(
@@ -217,7 +213,6 @@ fun NumberPad() {
                 Spacer(modifier = Modifier.weight(1f))
             },
         )
-        Spacer(modifier = Modifier.size(8.dp))
         NumberPadRow(
             {
                 Text(
@@ -250,7 +245,6 @@ fun NumberPad() {
                 Spacer(modifier = Modifier.weight(1f))
             },
         )
-        Spacer(modifier = Modifier.size(8.dp))
         NumberPadRow(
             {
                 Text(
