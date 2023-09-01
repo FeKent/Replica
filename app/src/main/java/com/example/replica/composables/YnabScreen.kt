@@ -154,31 +154,46 @@ fun NumberPad() {
     ) {
         NumberPadRow(
             {
-                Text(
-                    text = "7",
-                    fontSize = 20.sp,
-                    color = Color.DarkGray,
+                TextButton(
+                    {},
                     modifier = Modifier.weight(1f),
-                    textAlign = TextAlign.Center
-                )
+                ) {
+                    Text(
+                        text = "7",
+                        fontSize = 20.sp,
+                        color = Color.DarkGray,
+                        modifier = Modifier.weight(1f),
+                        textAlign = TextAlign.Center
+                    )
+                }
             },
             {
-                Text(
-                    text = "8",
-                    fontSize = 20.sp,
-                    color = Color.DarkGray,
+                TextButton(
+                    {},
                     modifier = Modifier.weight(1f),
-                    textAlign = TextAlign.Center
-                )
+                ) {
+                    Text(
+                        text = "8",
+                        fontSize = 20.sp,
+                        color = Color.DarkGray,
+                        modifier = Modifier.weight(1f),
+                        textAlign = TextAlign.Center
+                    )
+                }
             },
             {
-                Text(
-                    text = "9",
-                    fontSize = 20.sp,
-                    color = Color.DarkGray,
+                TextButton(
+                    {},
                     modifier = Modifier.weight(1f),
-                    textAlign = TextAlign.Center
-                )
+                ) {
+                    Text(
+                        text = "9",
+                        fontSize = 20.sp,
+                        color = Color.DarkGray,
+                        modifier = Modifier.weight(1f),
+                        textAlign = TextAlign.Center
+                    )
+                }
             },
             {
                 Spacer(modifier = Modifier.weight(1f))
@@ -186,31 +201,46 @@ fun NumberPad() {
         )
         NumberPadRow(
             {
-                Text(
-                    text = "4",
-                    fontSize = 20.sp,
-                    color = Color.DarkGray,
+                TextButton(
+                    {},
                     modifier = Modifier.weight(1f),
-                    textAlign = TextAlign.Center
-                )
+                ) {
+                    Text(
+                        text = "4",
+                        fontSize = 20.sp,
+                        color = Color.DarkGray,
+                        modifier = Modifier.weight(1f),
+                        textAlign = TextAlign.Center
+                    )
+                }
             },
             {
-                Text(
-                    text = "5",
-                    fontSize = 20.sp,
-                    color = Color.DarkGray,
+                TextButton(
+                    {},
                     modifier = Modifier.weight(1f),
-                    textAlign = TextAlign.Center
-                )
+                ) {
+                    Text(
+                        text = "5",
+                        fontSize = 20.sp,
+                        color = Color.DarkGray,
+                        modifier = Modifier.weight(1f),
+                        textAlign = TextAlign.Center
+                    )
+                }
             },
             {
-                Text(
-                    text = "6",
-                    fontSize = 20.sp,
-                    color = Color.DarkGray,
+                TextButton(
+                    {},
                     modifier = Modifier.weight(1f),
-                    textAlign = TextAlign.Center
-                )
+                ) {
+                    Text(
+                        text = "6",
+                        fontSize = 20.sp,
+                        color = Color.DarkGray,
+                        modifier = Modifier.weight(1f),
+                        textAlign = TextAlign.Center
+                    )
+                }
             },
             {
                 Spacer(modifier = Modifier.weight(1f))
@@ -218,31 +248,45 @@ fun NumberPad() {
         )
         NumberPadRow(
             {
-                Text(
-                    text = "1",
-                    fontSize = 20.sp,
-                    color = Color.DarkGray,
+                TextButton(
+                    {},
                     modifier = Modifier.weight(1f),
-                    textAlign = TextAlign.Center
-                )
+                ) {
+                    Text(
+                        text = "1",
+                        fontSize = 20.sp,
+                        color = Color.DarkGray,
+                        textAlign = TextAlign.Center
+                    )
+                }
             },
             {
-                Text(
-                    text = "2",
-                    fontSize = 20.sp,
-                    color = Color.DarkGray,
+                TextButton(
+                    {},
                     modifier = Modifier.weight(1f),
-                    textAlign = TextAlign.Center
-                )
+                ) {
+                    Text(
+                        text = "2",
+                        fontSize = 20.sp,
+                        color = Color.DarkGray,
+                        modifier = Modifier.weight(1f),
+                        textAlign = TextAlign.Center
+                    )
+                }
             },
             {
-                Text(
-                    text = "3",
-                    fontSize = 20.sp,
-                    color = Color.DarkGray,
+                TextButton(
+                    {},
                     modifier = Modifier.weight(1f),
-                    textAlign = TextAlign.Center
-                )
+                ) {
+                    Text(
+                        text = "3",
+                        fontSize = 20.sp,
+                        color = Color.DarkGray,
+                        modifier = Modifier.weight(1f),
+                        textAlign = TextAlign.Center
+                    )
+                }
             },
             {
                 Spacer(modifier = Modifier.weight(1f))
@@ -250,19 +294,29 @@ fun NumberPad() {
         )
         NumberPadRow(
             {
-                Text(
-                    text = "", fontSize = 20.sp, modifier = Modifier.weight(1f),
-                    textAlign = TextAlign.Center
-                )
+                TextButton(
+                    {},
+                    modifier = Modifier.weight(1f),
+                ) {
+                    Text(
+                        text = "", fontSize = 20.sp, modifier = Modifier.weight(1f),
+                        textAlign = TextAlign.Center
+                    )
+                }
             },
             {
-                Text(
-                    text = "0",
-                    fontSize = 20.sp,
-                    color = Color.DarkGray,
+                TextButton(
+                    {},
                     modifier = Modifier.weight(1f),
-                    textAlign = TextAlign.Center
-                )
+                ) {
+                    Text(
+                        text = "0",
+                        fontSize = 20.sp,
+                        color = Color.DarkGray,
+                        modifier = Modifier.weight(1f),
+                        textAlign = TextAlign.Center
+                    )
+                }
             },
             {
                 // Bit of a hack, using text button to get clear background:
