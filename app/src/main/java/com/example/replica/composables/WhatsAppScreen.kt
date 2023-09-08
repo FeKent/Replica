@@ -322,6 +322,7 @@ fun IncomingMessage(message: String, time: String) {
                             fontWeight = FontWeight.SemiBold,
                             textAlign = TextAlign.End,
                         )
+                        Spacer(modifier = Modifier.size(4.dp))
                     }
                 }
             }
@@ -369,6 +370,7 @@ fun OutgoingMessage(message: String, time: String) {
                                 .size(20.dp)
                                 .padding(0.dp)
                         )
+                        Spacer(modifier = Modifier.size(4.dp))
                     }
                 }
             }
