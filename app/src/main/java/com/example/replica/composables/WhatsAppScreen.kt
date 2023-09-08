@@ -149,7 +149,9 @@ fun WhatsAppScreen(
             // Only need a single Column here; the nested one wasn't necessary!
             Column(
                 // No need for weight here; we want this column to be as big as it needs to be!
-                modifier = Modifier.weight(1f).verticalScroll(rememberScrollState())
+                modifier = Modifier
+                    .weight(1f)
+                    .verticalScroll(rememberScrollState())
             ) {
                 // Insert Header states into list (this would happen in a ViewModel, IRL):
 
@@ -258,7 +260,7 @@ fun NewMessage(value: String, onValueChange: (String) -> Unit) {
             }
             Icon(
                 painter = painterResource(id = R.drawable.microphone),
-                "Take Picture",
+                "Voice Message",
                 tint = Color.White,
                 modifier = Modifier
                     .align(Alignment.CenterVertically)
@@ -293,82 +295,86 @@ fun TimeStamp(date: String) {
 
 @Composable
 fun IncomingMessage(message: String, time: String) {
-    Row(
-        modifier = Modifier
-            .padding(start = 8.dp, end = 55.dp)
-    ) {
-        Box(
+    Column {
+        Row(
             modifier = Modifier
-                .background(color = Color.White, shape = RoundedCornerShape(5.dp))
-                .padding(8.dp, bottom = 4.dp)
-                .weight(1f)
+                .padding(start = 8.dp, end = 55.dp)
         ) {
-            Column {
-                Text(
-                    text = message,
-                    textAlign = TextAlign.Start,
-                    fontSize = 16.sp,
-                    lineHeight = 16.sp,
-                    color = Color.Black
-                )
-                Row(horizontalArrangement = Arrangement.End, modifier = Modifier.fillMaxWidth()) {
+            Box(
+                modifier = Modifier
+                    .background(color = Color.White, shape = RoundedCornerShape(5.dp))
+                    .padding(8.dp, bottom = 4.dp)
+                    .weight(1f)
+            ) {
+                Column {
                     Text(
-                        text = time,
-                        color = Color.Gray,
-                        fontSize = 12.sp,
-                        fontWeight = FontWeight.SemiBold,
-                        textAlign = TextAlign.End,
+                        text = message,
+                        textAlign = TextAlign.Start,
+                        fontSize = 16.sp,
+                        lineHeight = 16.sp,
+                        color = Color.Black
                     )
+                    Row(horizontalArrangement = Arrangement.End, modifier = Modifier.fillMaxWidth()) {
+                        Text(
+                            text = time,
+                            color = Color.Gray,
+                            fontSize = 12.sp,
+                            fontWeight = FontWeight.SemiBold,
+                            textAlign = TextAlign.End,
+                        )
+                    }
                 }
             }
         }
+        Spacer(modifier = Modifier.size(8.dp))
     }
-    Spacer(modifier = Modifier.size(8.dp))
 }
 
 @Composable
 fun OutgoingMessage(message: String, time: String) {
-    Row(
-        modifier = Modifier
-            .padding(start = 55.dp, end = 8.dp)
-    ) {
-        Box(
+    Column {
+        Row(
             modifier = Modifier
-                .background(color = Color(231, 255, 219, 255), shape = RoundedCornerShape(5.dp))
-                .padding(8.dp, bottom = 4.dp)
-                .weight(1f)
+                .padding(start = 55.dp, end = 8.dp)
         ) {
-            Column {
-                Text(
-                    text = message,
-                    textAlign = TextAlign.Start,
-                    fontSize = 16.sp,
-                    lineHeight = 16.sp,
-                    color = Color.Black
-                )
-                Row(horizontalArrangement = Arrangement.End, modifier = Modifier.fillMaxWidth()) {
+            Box(
+                modifier = Modifier
+                    .background(color = Color(231, 255, 219, 255), shape = RoundedCornerShape(5.dp))
+                    .padding(8.dp, bottom = 4.dp)
+                    .weight(1f)
+            ) {
+                Column {
                     Text(
-                        text = time,
-                        color = Color.Gray,
-                        fontSize = 12.sp,
-                        fontWeight = FontWeight.SemiBold,
-                        textAlign = TextAlign.End,
-                        modifier = Modifier.padding(top = 4.dp)
+                        text = message,
+                        textAlign = TextAlign.Start,
+                        fontSize = 16.sp,
+                        lineHeight = 16.sp,
+                        color = Color.Black
                     )
-                    Spacer(modifier = Modifier.size(4.dp))
-                    Icon(
-                        painter = painterResource(id = R.drawable.double_check),
-                        "Notification Check",
-                        tint = Color(20, 152, 201, 255),
-                        modifier = Modifier
-                            .size(20.dp)
-                            .padding(0.dp)
-                    )
+                    Row(horizontalArrangement = Arrangement.End, modifier = Modifier.fillMaxWidth()) {
+                        Text(
+                            text = time,
+                            color = Color.Gray,
+                            fontSize = 12.sp,
+                            fontWeight = FontWeight.SemiBold,
+                            textAlign = TextAlign.End,
+                            modifier = Modifier.padding(top = 4.dp)
+                        )
+                        Spacer(modifier = Modifier.size(4.dp))
+                        Icon(
+                            painter = painterResource(id = R.drawable.double_check),
+                            "Notification Check",
+                            tint = Color(20, 152, 201, 255),
+                            modifier = Modifier
+                                .size(20.dp)
+                                .padding(0.dp)
+                        )
+                    }
                 }
             }
         }
+        Spacer(modifier = Modifier.size(8.dp))
     }
-    Spacer(modifier = Modifier.size(8.dp))
 }
 
 
