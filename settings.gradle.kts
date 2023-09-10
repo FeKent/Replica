@@ -13,6 +13,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Replica"
+rootProject.name = "Replika"
 include(":app")
  

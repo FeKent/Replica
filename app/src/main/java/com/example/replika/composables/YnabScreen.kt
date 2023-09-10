@@ -42,7 +42,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.core.graphics.toColorInt
-import com.example.replica.R
+import com.example.replika.R
 
 data class YnabScreenViewState(
     val moveAmount: String,

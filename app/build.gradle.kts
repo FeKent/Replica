@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.replica"
+    namespace = "com.example.replika"
     compileSdk = 33
 
     defaultConfig {
-        applicationId = "com.example.replica"
+        applicationId = "com.example.replika"
         minSdk = 26
         targetSdk = 33
         versionCode = 1
