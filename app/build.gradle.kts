@@ -5,12 +5,13 @@ plugins {
 
 android {
     namespace = "com.example.replika"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.example.replika"
         minSdk = 26
-        targetSdk = 33
+        //noinspection EditedTargetSdkVersion
+        targetSdk = 34
         versionCode = 1
         versionName = "1.0"
 
@@ -51,11 +52,11 @@ android {
 
 dependencies {
 
-    val navVersion = "2.6.0"
+    val navVersion = "2.7.2"
 
     implementation("androidx.navigation:navigation-compose:$navVersion")
-    implementation("androidx.core:core-ktx:1.10.1")
-    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.1")
+    implementation("androidx.core:core-ktx:1.12.0")
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.2")
     implementation("androidx.activity:activity-compose:1.7.2")
     implementation(platform("androidx.compose:compose-bom:2023.03.00"))
     implementation("androidx.compose.ui:ui")
