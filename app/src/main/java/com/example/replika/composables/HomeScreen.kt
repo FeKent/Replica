@@ -37,10 +37,10 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.replica.R
+import com.example.replika.R
 
 @Composable
-fun HomeScreen(ynabScreen: () -> Unit, whatsAppScreen: () ->Unit) {
+fun HomeScreen(ynabScreen: () -> Unit, whatsAppScreen: () -> Unit, droneAssistScreen: () -> Unit) {
     val uriHandler = LocalUriHandler.current
     val portfolioLink = "https://github.com/FeKent"
 
@@ -71,6 +71,10 @@ fun HomeScreen(ynabScreen: () -> Unit, whatsAppScreen: () ->Unit) {
             Column(modifier = Modifier.align(alignment = Alignment.TopCenter)) {
                 ScreenRow(screenChange = { ynabScreen() }, title = "YNAB - Move Money")
                 ScreenRow(screenChange = { whatsAppScreen() }, title = "WhatsApp")
+                ScreenRow(
+                    screenChange = { droneAssistScreen() },
+                    title = "Altitude Angel - Drone Assist"
+                )
             }
         }
         Spacer(modifier = Modifier.size(32.dp))

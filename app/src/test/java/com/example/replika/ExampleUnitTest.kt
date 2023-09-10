@@ -1,4 +1,4 @@
-package com.example.replica
+package com.example.replika
 
 import org.junit.Test
 
