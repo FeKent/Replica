@@ -1,4 +1,4 @@
-package com.example.replica.ui.theme
+package com.example.replika.ui.theme
 
 import android.app.Activity
 import android.os.Build

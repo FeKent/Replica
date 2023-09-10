@@ -1,4 +1,4 @@
-package com.example.replica.ui.theme
+package com.example.replika.ui.theme
 
 import androidx.compose.ui.graphics.Color
 

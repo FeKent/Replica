@@ -11,10 +11,11 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.example.replica.composables.HomeScreen
-import com.example.replica.composables.WhatsAppScreen
-import com.example.replica.composables.YnabScreen
-import com.example.replica.ui.theme.ReplikaTheme
+import com.example.replika.ui.theme.ReplikaTheme
+import com.example.replika.composables.HomeScreen
+import com.example.replika.composables.WhatsAppScreen
+import com.example.replika.composables.YnabScreen
+
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
