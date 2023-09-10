@@ -12,6 +12,7 @@ fun DroneAssistScreen(backHome:() -> Unit) {
         Button(onClick = { backHome()}) {
             Text(text = "Test")
         }
+
     }
 
 }
