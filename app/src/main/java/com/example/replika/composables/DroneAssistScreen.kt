@@ -3,13 +3,17 @@ package com.example.replika.composables
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.AccountBox
 import androidx.compose.material.icons.filled.Close
+import androidx.compose.material.icons.filled.LocationOn
+import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
@@ -18,6 +22,7 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -35,10 +40,20 @@ fun DroneAssistScreen(backHome: () -> Unit) {
         DroneTopAppBar(backHome = backHome)
         Spacer(modifier = Modifier.size(6.dp))
         Box(modifier = Modifier.fillMaxHeight(0.75f)) {
-            GoogleMap(properties = MapProperties(isBuildingEnabled = true), cameraPositionState = CameraPositionState(
-                CameraPosition(LatLng(51.35, 0.57), 10f, 0f, 0f)
-            )) {}
+            GoogleMap(
+                properties = MapProperties(isBuildingEnabled = true),
+                cameraPositionState = CameraPositionState(
+                    CameraPosition(LatLng(51.35, 0.57), 10f, 0f, 0f)
+                ),
+                modifier = Modifier.shadow(
+                    elevation = 4.dp,
+                    clip = true,
+                    ambientColor = Color.LightGray
+                )
+            ) {}
         }
+        Spacer(modifier = Modifier.size(16.dp))
+        BottomBar()
 
     }
 
@@ -58,10 +73,37 @@ fun DroneTopAppBar(backHome: () -> Unit) {
         },
             navigationIcon = {
                 IconButton({}) {
-                    Icon(Icons.Filled.Close, "Close", tint = Color(0, 102, 139), modifier = Modifier.clickable { backHome() })
+                    Icon(
+                        Icons.Filled.Close,
+                        "Close",
+                        tint = Color(0, 102, 139),
+                        modifier = Modifier.clickable { backHome() })
                 }
             }
         )
     }
+}
 
+@Composable
+fun BottomBar() {
+    Row(
+        modifier = Modifier.fillMaxWidth()
+    ) {
+        Spacer(modifier = Modifier.size(4.dp))
+        Icon(
+            Icons.Filled.AccountBox, "My Plans", modifier = Modifier
+                .weight(1f)
+                .size(50.dp)
+        )
+        Icon(
+            Icons.Filled.LocationOn, "Map", modifier = Modifier
+                .weight(1f)
+                .size(50.dp)
+        )
+        Icon(
+            Icons.Filled.Settings, "You", modifier = Modifier
+                .weight(1f)
+                .size(50.dp)
+        )
+    }
 }
