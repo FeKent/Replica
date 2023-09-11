@@ -1,8 +1,13 @@
 package com.example.replika.composables
 
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material3.CenterAlignedTopAppBar
@@ -26,11 +31,15 @@ import com.google.maps.android.compose.MapProperties
 
 @Composable
 fun DroneAssistScreen(backHome: () -> Unit) {
-    Column {
+    Column(modifier = Modifier.fillMaxSize(1f)) {
         DroneTopAppBar(backHome = backHome)
-        GoogleMap(properties = MapProperties(isBuildingEnabled = true), cameraPositionState = CameraPositionState(
-            CameraPosition(LatLng(51.35, 0.57), 10f, 0f, 0f)
-        )) {}
+        Spacer(modifier = Modifier.size(6.dp))
+        Box(modifier = Modifier.fillMaxHeight(0.75f)) {
+            GoogleMap(properties = MapProperties(isBuildingEnabled = true), cameraPositionState = CameraPositionState(
+                CameraPosition(LatLng(51.35, 0.57), 10f, 0f, 0f)
+            )) {}
+        }
+
     }
 
 }
