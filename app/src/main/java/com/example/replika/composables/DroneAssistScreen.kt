@@ -17,6 +17,9 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.google.android.gms.maps.model.CameraPosition
+import com.google.android.gms.maps.model.LatLng
+import com.google.maps.android.compose.CameraPositionState
 import com.google.maps.android.compose.GoogleMap
 import com.google.maps.android.compose.MapProperties
 
@@ -25,7 +28,9 @@ import com.google.maps.android.compose.MapProperties
 fun DroneAssistScreen(backHome: () -> Unit) {
     Column {
         DroneTopAppBar(backHome = backHome)
-        GoogleMap(properties = MapProperties(isBuildingEnabled = true)) {}
+        GoogleMap(properties = MapProperties(isBuildingEnabled = true), cameraPositionState = CameraPositionState(
+            CameraPosition(LatLng(51.35, 0.57), 10f, 0f, 0f)
+        )) {}
     }
 
 }
