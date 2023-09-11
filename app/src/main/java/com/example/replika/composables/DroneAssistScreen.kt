@@ -38,8 +38,7 @@ import com.google.maps.android.compose.MapProperties
 fun DroneAssistScreen(backHome: () -> Unit) {
     Column(modifier = Modifier.fillMaxSize(1f)) {
         DroneTopAppBar(backHome = backHome)
-        Spacer(modifier = Modifier.size(6.dp))
-        Box(modifier = Modifier.fillMaxHeight(0.75f)) {
+        Box(modifier = Modifier.weight(4f)) {
             GoogleMap(
                 properties = MapProperties(isBuildingEnabled = true),
                 cameraPositionState = CameraPositionState(
@@ -52,8 +51,9 @@ fun DroneAssistScreen(backHome: () -> Unit) {
                 )
             ) {}
         }
-        Spacer(modifier = Modifier.size(16.dp))
-        BottomBar()
+        Spacer(modifier = Modifier.size(8.dp))
+        BottomBar(modifier = Modifier.weight(1f))
+        Spacer(modifier = Modifier.size(8.dp))
 
     }
 
@@ -85,7 +85,7 @@ fun DroneTopAppBar(backHome: () -> Unit) {
 }
 
 @Composable
-fun BottomBar() {
+fun BottomBar(modifier: Modifier = Modifier) {
     Row(
         modifier = Modifier.fillMaxWidth()
     ) {
@@ -94,16 +94,19 @@ fun BottomBar() {
             Icons.Filled.AccountBox, "My Plans", modifier = Modifier
                 .weight(1f)
                 .size(50.dp)
+                .clickable { /*TODO*/ }
         )
         Icon(
             Icons.Filled.LocationOn, "Map", modifier = Modifier
                 .weight(1f)
                 .size(50.dp)
+                .clickable { /*TODO*/ }
         )
         Icon(
             Icons.Filled.Settings, "You", modifier = Modifier
                 .weight(1f)
                 .size(50.dp)
+                .clickable { /*TODO*/ }
         )
     }
 }
