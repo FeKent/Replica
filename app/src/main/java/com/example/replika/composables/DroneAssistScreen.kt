@@ -5,7 +5,6 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.size
@@ -32,6 +31,8 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.maps.android.compose.CameraPositionState
 import com.google.maps.android.compose.GoogleMap
 import com.google.maps.android.compose.MapProperties
+import com.google.maps.android.compose.MapType
+import com.google.maps.android.compose.MapUiSettings
 
 
 @Composable
@@ -40,7 +41,8 @@ fun DroneAssistScreen(backHome: () -> Unit) {
         DroneTopAppBar(backHome = backHome)
         Box(modifier = Modifier.weight(4f)) {
             GoogleMap(
-                properties = MapProperties(isBuildingEnabled = true),
+                properties = MapProperties(isBuildingEnabled = true, mapType = MapType.HYBRID),
+                uiSettings = MapUiSettings(compassEnabled = true, mapToolbarEnabled = true),
                 cameraPositionState = CameraPositionState(
                     CameraPosition(LatLng(51.35, 0.57), 10f, 0f, 0f)
                 ),
@@ -49,7 +51,7 @@ fun DroneAssistScreen(backHome: () -> Unit) {
                     clip = true,
                     ambientColor = Color.LightGray
                 )
-            ) {}
+            )
         }
         Spacer(modifier = Modifier.size(8.dp))
         BottomBar(modifier = Modifier.weight(1f))
