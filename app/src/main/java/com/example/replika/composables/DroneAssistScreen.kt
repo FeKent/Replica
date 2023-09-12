@@ -12,24 +12,30 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountBox
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.LocationOn
+import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.replika.R
 import com.google.android.gms.maps.model.CameraPosition
 import com.google.android.gms.maps.model.LatLng
 import com.google.maps.android.compose.CameraPositionState
 import com.google.maps.android.compose.GoogleMap
+import com.google.maps.android.compose.GoogleMapComposable
 import com.google.maps.android.compose.MapProperties
 import com.google.maps.android.compose.MapType
 import com.google.maps.android.compose.MapUiSettings
@@ -39,6 +45,7 @@ import com.google.maps.android.compose.MapUiSettings
 fun DroneAssistScreen(backHome: () -> Unit) {
     Column(modifier = Modifier.fillMaxSize(1f)) {
         DroneTopAppBar(backHome = backHome)
+        TopBar()
         Box(modifier = Modifier.weight(4f)) {
             GoogleMap(
                 properties = MapProperties(isBuildingEnabled = true, mapType = MapType.HYBRID),
@@ -46,6 +53,7 @@ fun DroneAssistScreen(backHome: () -> Unit) {
                 cameraPositionState = CameraPositionState(
                     CameraPosition(LatLng(51.35, 0.57), 10f, 0f, 0f)
                 ),
+
                 modifier = Modifier.shadow(
                     elevation = 4.dp,
                     clip = true,
@@ -56,7 +64,6 @@ fun DroneAssistScreen(backHome: () -> Unit) {
         Spacer(modifier = Modifier.size(8.dp))
         BottomBar(modifier = Modifier.weight(1f))
         Spacer(modifier = Modifier.size(8.dp))
-
     }
 
 }
@@ -83,6 +90,25 @@ fun DroneTopAppBar(backHome: () -> Unit) {
                 }
             }
         )
+    }
+}
+
+@Composable
+fun TopBar() {
+    Row {
+        Spacer(modifier = Modifier.size(8.dp))
+        Icon(Icons.Filled.Search, "Search")
+        Spacer(modifier = Modifier.size(4.dp))
+        Icon(painter = painterResource(id = R.drawable.filter), "Filter")
+        Spacer(modifier = Modifier.size(4.dp))
+        Icon(painter = painterResource(id = R.drawable.layers), contentDescription = "Map Type")
+        Spacer(modifier = Modifier.size(4.dp))
+        Row {
+            Icon(painter = painterResource(id = R.drawable.sun), contentDescription = "Temperature")
+            Spacer(modifier = Modifier.size(4.dp))
+            Text(text = "21 \u2103")
+
+        }
     }
 }
 
