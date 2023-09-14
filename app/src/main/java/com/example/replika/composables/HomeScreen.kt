@@ -35,6 +35,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.replika.R
@@ -123,7 +124,14 @@ fun ScreenRow(screenChange: () -> Unit, title: String) {
             )
             .fillMaxWidth(2f)
     ) {
-        Text(title, fontSize = 20.sp)
+        Text(title, fontSize = 20.sp, softWrap = true, textAlign = TextAlign.Center)
     }
     Divider(color = Color(0, 102, 139, 100))
+}
+
+@Preview(fontScale = 2f)
+@Composable
+fun HomePreview() {
+    HomeScreen(ynabScreen = { /*TODO*/ }, whatsAppScreen = { /*TODO*/ }) {
+    }
 }
