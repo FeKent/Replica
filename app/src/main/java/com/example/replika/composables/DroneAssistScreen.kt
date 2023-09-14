@@ -1,13 +1,16 @@
 package com.example.replika.composables
 
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountBox
 import androidx.compose.material.icons.filled.Close
@@ -16,18 +19,19 @@ import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
-import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.modifier.modifierLocalConsumer
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.replika.R
@@ -35,7 +39,6 @@ import com.google.android.gms.maps.model.CameraPosition
 import com.google.android.gms.maps.model.LatLng
 import com.google.maps.android.compose.CameraPositionState
 import com.google.maps.android.compose.GoogleMap
-import com.google.maps.android.compose.GoogleMapComposable
 import com.google.maps.android.compose.MapProperties
 import com.google.maps.android.compose.MapType
 import com.google.maps.android.compose.MapUiSettings
@@ -45,7 +48,7 @@ import com.google.maps.android.compose.MapUiSettings
 fun DroneAssistScreen(backHome: () -> Unit) {
     Column(modifier = Modifier.fillMaxSize(1f)) {
         DroneTopAppBar(backHome = backHome)
-        TopBar()
+        TopBar(modifier = Modifier.fillMaxWidth())
         Box(modifier = Modifier.weight(4f)) {
             GoogleMap(
                 properties = MapProperties(isBuildingEnabled = true, mapType = MapType.HYBRID),
@@ -94,20 +97,41 @@ fun DroneTopAppBar(backHome: () -> Unit) {
 }
 
 @Composable
-fun TopBar() {
-    Row {
+fun TopBar(modifier: Modifier = Modifier) {
+    Row(modifier) {
         Spacer(modifier = Modifier.size(8.dp))
-        Icon(Icons.Filled.Search, "Search")
+        Icon(Icons.Filled.Search, "Search", modifier = Modifier
+            .size(30.dp)
+            .weight(1f)
+            .clickable { /*TODO*/ }
+        )
         Spacer(modifier = Modifier.size(4.dp))
-        Icon(painter = painterResource(id = R.drawable.filter), "Filter")
+        Icon(painter = painterResource(id = R.drawable.filter), "Filter", modifier = Modifier
+            .size(30.dp)
+            .weight(1f)
+            .clickable { /*TODO*/ }
+        )
         Spacer(modifier = Modifier.size(4.dp))
-        Icon(painter = painterResource(id = R.drawable.layers), contentDescription = "Map Type")
+        Icon(painter = painterResource(id = R.drawable.layers),
+            contentDescription = "Map Type",
+            modifier = Modifier
+                .size(30.dp)
+                .weight(1f)
+                .clickable { /*TODO*/ }
+        )
         Spacer(modifier = Modifier.size(4.dp))
-        Row {
-            Icon(painter = painterResource(id = R.drawable.sun), contentDescription = "Temperature")
-            Spacer(modifier = Modifier.size(4.dp))
-            Text(text = "21 \u2103")
-
+        Row(
+            horizontalArrangement = Arrangement.Center,
+            verticalAlignment = Alignment.CenterVertically,
+            modifier = Modifier
+                .weight(1f)) {
+            Icon(
+                painter = painterResource(id = R.drawable.sun),
+                contentDescription = "Temperature",
+                modifier = Modifier.size(30.dp)
+            )
+            Spacer(modifier = Modifier.size(2.dp))
+            Text(text = "21\u2103", textAlign = TextAlign.Center, fontWeight = FontWeight.SemiBold)
         }
     }
 }
