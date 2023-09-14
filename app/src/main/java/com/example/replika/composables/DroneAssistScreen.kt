@@ -29,12 +29,14 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.replika.R
 import com.google.android.gms.maps.model.CameraPosition
 import com.google.android.gms.maps.model.LatLng
 import com.google.maps.android.compose.CameraPositionState
+import com.google.maps.android.compose.Circle
 import com.google.maps.android.compose.GoogleMap
 import com.google.maps.android.compose.MapProperties
 import com.google.maps.android.compose.MapType
@@ -53,15 +55,42 @@ fun DroneAssistScreen(backHome: () -> Unit) {
                 properties = MapProperties(isBuildingEnabled = true, mapType = MapType.HYBRID),
                 uiSettings = MapUiSettings(compassEnabled = true, mapToolbarEnabled = true),
                 cameraPositionState = CameraPositionState(
-                    CameraPosition(LatLng(51.35, 0.57), 10f, 0f, 0f)
+                    CameraPosition(LatLng(51.35, 0.57), 11f, 0f, 0f)
                 ),
-
                 modifier = Modifier.shadow(
                     elevation = 4.dp,
                     clip = true,
                     ambientColor = Color.LightGray
                 )
-            )
+            ){
+                Circle(
+                    center = LatLng(51.38, 0.50),
+                    radius = 5000.0,
+                    fillColor = Color(178, 38, 77, 100),
+                    strokeColor = Color(178, 38, 77,255),
+                    strokeWidth = 2f,
+                    tag = "Restricted Zone",
+                    visible = true
+                )
+                Circle(
+                    center = LatLng(51.27, 0.52),
+                    radius = 3000.0,
+                    fillColor = Color(243,181,52, 100),
+                    strokeColor = Color(243,181,52,255),
+                    strokeWidth = 2f,
+                    tag = "Risk Zone",
+                    visible = true
+                )
+                Circle(
+                    center = LatLng(51.37, 0.64),
+                    radius = 2000.0,
+                    fillColor = Color(88,109,255, 100),
+                    strokeColor = Color(88,109,255,255),
+                    strokeWidth = 2f,
+                    tag = "Temporary Restricted Zone",
+                    visible = true
+                )
+            }
         }
         Spacer(modifier = Modifier.size(8.dp))
         BottomToolBar()
@@ -159,5 +188,19 @@ fun BottomToolBar() {
                 .size(50.dp)
                 .clickable { /*TODO*/ }
         )
+    }
+}
+
+@Preview
+@Composable
+fun DronePreview() {
+    DroneAssistScreen {}
+}
+
+@Preview(widthDp = 360, heightDp = 500)
+@Composable
+fun DroneShort() {
+    DroneAssistScreen {
+
     }
 }
