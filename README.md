@@ -16,9 +16,9 @@ piece, demonstrating proficiency in various aspects of Android app development.
 
 Replika employs a diverse tech stack to achieve its goals:
 
-## Dependency Injection
+## Dependencies
 
-Several manual dependency injections were carefully integrated to add essential reference libraries,
+Several dependencies were carefully integrated to add essential reference libraries,
 ensuring seamless functionality throughout the project:
 
 - **Google Maps API**: Utilized in the Drone Assist Screen to incorporate an interactive and movable
