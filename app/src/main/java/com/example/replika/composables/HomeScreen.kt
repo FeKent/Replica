@@ -41,7 +41,12 @@ import androidx.compose.ui.unit.sp
 import com.example.replika.R
 
 @Composable
-fun HomeScreen(ynabScreen: () -> Unit, whatsAppScreen: () -> Unit, droneAssistScreen: () -> Unit) {
+fun HomeScreen(
+    ynabScreen: () -> Unit,
+    whatsAppScreen: () -> Unit,
+    droneAssistScreen: () -> Unit,
+    gmailScreen: () -> Unit
+) {
     val uriHandler = LocalUriHandler.current
     val portfolioLink = "https://github.com/FeKent"
 
@@ -76,6 +81,7 @@ fun HomeScreen(ynabScreen: () -> Unit, whatsAppScreen: () -> Unit, droneAssistSc
                     screenChange = { droneAssistScreen() },
                     title = "Altitude Angel - Drone Assist"
                 )
+                ScreenRow(screenChange = { gmailScreen() }, title = "Gmail")
             }
         }
         Spacer(modifier = Modifier.size(32.dp))
@@ -132,6 +138,9 @@ fun ScreenRow(screenChange: () -> Unit, title: String) {
 @Preview(fontScale = 2f)
 @Composable
 fun HomePreview() {
-    HomeScreen(ynabScreen = { /*TODO*/ }, whatsAppScreen = { /*TODO*/ }) {
-    }
+    HomeScreen(
+        ynabScreen = { /*TODO*/ },
+        whatsAppScreen = { /*TODO*/ },
+        droneAssistScreen = {/*TODO*/ },
+        gmailScreen = { /*TODO*/ })
 }

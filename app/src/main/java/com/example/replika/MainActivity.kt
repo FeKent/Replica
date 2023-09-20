@@ -12,6 +12,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.replika.composables.DroneAssistScreen
+import com.example.replika.composables.GmailScreen
 import com.example.replika.ui.theme.ReplikaTheme
 import com.example.replika.composables.HomeScreen
 import com.example.replika.composables.WhatsAppScreen
@@ -40,6 +41,7 @@ sealed class Screen(val route: String) {
     object Ynab : Screen("YNAB")
     object WhatsApp : Screen("WhatsApp")
     object DroneAssist : Screen("Drone Assist")
+    object Gmail : Screen("Gmail")
 }
 
 
@@ -52,11 +54,13 @@ fun Replika() {
             HomeScreen(
                 ynabScreen = { navController.navigate(Screen.Ynab.route) },
                 whatsAppScreen = { navController.navigate(Screen.WhatsApp.route) },
-                droneAssistScreen = {navController.navigate(Screen.DroneAssist.route)}
+                droneAssistScreen = {navController.navigate(Screen.DroneAssist.route)},
+                gmailScreen = {navController.navigate(Screen.Gmail.route)}
                 )
         }
         composable(Screen.Ynab.route) { YnabScreen({ navController.navigate(Screen.Home.route) }) }
         composable(Screen.WhatsApp.route) { WhatsAppScreen { navController.navigate(Screen.Home.route) } }
         composable(Screen.DroneAssist.route) {DroneAssistScreen{ navController.navigate(Screen.Home.route)}}
+        composable(Screen.Gmail.route){ GmailScreen {navController.navigate(Screen.Home.route)}}
     }
 }
