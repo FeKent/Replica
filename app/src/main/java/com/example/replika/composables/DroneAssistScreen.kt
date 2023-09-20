@@ -1,5 +1,6 @@
 package com.example.replika.composables
 
+import android.widget.Toast
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -26,6 +27,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -45,6 +47,7 @@ import com.google.maps.android.compose.MapUiSettings
 
 @Composable
 fun DroneAssistScreen(backHome: () -> Unit) {
+    val context = LocalContext.current
     Column(modifier = Modifier.fillMaxSize(1f)) {
         DroneTopAppBar(backHome = backHome)
         Spacer(modifier = Modifier.size(4.dp))
@@ -70,7 +73,9 @@ fun DroneAssistScreen(backHome: () -> Unit) {
                     strokeColor = Color(178, 38, 77,255),
                     strokeWidth = 2f,
                     tag = "Restricted Zone",
-                    visible = true
+                    visible = true,
+                    clickable = true,
+                    onClick = { Toast.makeText(context,"Restricted Zone", Toast.LENGTH_SHORT).show()}
                 )
                 Circle(
                     center = LatLng(51.27, 0.52),
@@ -79,7 +84,9 @@ fun DroneAssistScreen(backHome: () -> Unit) {
                     strokeColor = Color(243,181,52,255),
                     strokeWidth = 2f,
                     tag = "Risk Zone",
-                    visible = true
+                    visible = true,
+                    clickable = true,
+                    onClick = { Toast.makeText(context,"Risk Zone", Toast.LENGTH_SHORT).show()}
                 )
                 Circle(
                     center = LatLng(51.37, 0.64),
@@ -88,7 +95,9 @@ fun DroneAssistScreen(backHome: () -> Unit) {
                     strokeColor = Color(88,109,255,255),
                     strokeWidth = 2f,
                     tag = "Temporary Restricted Zone",
-                    visible = true
+                    visible = true,
+                    clickable = true,
+                    onClick = { Toast.makeText(context,"Temporary Restricted Zone", Toast.LENGTH_SHORT).show()}
                 )
             }
         }
@@ -96,8 +105,8 @@ fun DroneAssistScreen(backHome: () -> Unit) {
         BottomToolBar()
         Spacer(modifier = Modifier.size(8.dp))
     }
-
 }
+
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
