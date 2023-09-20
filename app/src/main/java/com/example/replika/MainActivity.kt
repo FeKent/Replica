@@ -61,6 +61,6 @@ fun Replika() {
         composable(Screen.Ynab.route) { YnabScreen({ navController.navigate(Screen.Home.route) }) }
         composable(Screen.WhatsApp.route) { WhatsAppScreen { navController.navigate(Screen.Home.route) } }
         composable(Screen.DroneAssist.route) {DroneAssistScreen{ navController.navigate(Screen.Home.route)}}
-        composable(Screen.Gmail.route){ GmailScreen {navController.navigate(Screen.Home.route)}}
+        composable(Screen.Gmail.route){ GmailScreen { navController.navigate(Screen.Home.route) } }
     }
 }
