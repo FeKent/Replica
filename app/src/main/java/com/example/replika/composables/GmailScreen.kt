@@ -1,5 +1,6 @@
 package com.example.replika.composables
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -33,7 +34,7 @@ import androidx.compose.ui.unit.sp
 @Composable
 fun GmailScreen(backHome: () -> Unit) {
     var searchItem by remember { mutableStateOf("") }
-    Column {
+    Column(modifier = Modifier.background(color = Color.White)) {
         GmailAppBar(backHome = backHome)
         GmailSearchBar(value = searchItem, onValueChange = { searchItem = it })
     }
