@@ -1,5 +1,6 @@
 package com.example.replika.composables
 
+import android.widget.Space
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
@@ -37,6 +38,12 @@ fun GmailScreen(backHome: () -> Unit) {
     Column(modifier = Modifier.background(color = Color.White)) {
         GmailAppBar(backHome = backHome)
         GmailSearchBar(value = searchItem, onValueChange = { searchItem = it })
+        Spacer(modifier = Modifier.size(16.dp))
+        Row(modifier = Modifier.padding(start = 8.dp)) {
+            Text(text = "Primary", fontSize = 12.sp, fontWeight = FontWeight.Medium, color = Color.DarkGray)
+        }
+        Spacer(modifier = Modifier.size(16.dp))
+
     }
 }
 
@@ -51,6 +58,7 @@ fun GmailSearchBar(value: String, onValueChange: (String) -> Unit) {
         Spacer(modifier = Modifier.size(8.dp))
         TextField(
             value = value,
+            placeholder = { Text(text = "Search in emails")},
             onValueChange = { onValueChange(it) },
             singleLine = true,
             modifier = Modifier.weight(6f),

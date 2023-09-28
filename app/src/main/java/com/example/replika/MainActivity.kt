@@ -49,7 +49,7 @@ sealed class Screen(val route: String) {
 fun Replika() {
     val navController = rememberNavController()
 
-    NavHost(navController = navController, startDestination = Screen.Home.route) {
+    NavHost(navController = navController, startDestination = Screen.Gmail.route) {
         composable(Screen.Home.route) {
             HomeScreen(
                 ynabScreen = { navController.navigate(Screen.Ynab.route) },
