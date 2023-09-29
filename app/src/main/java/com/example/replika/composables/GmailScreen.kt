@@ -16,7 +16,6 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountCircle
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.Menu
-import androidx.compose.material.icons.filled.Star
 import androidx.compose.material.icons.outlined.FavoriteBorder
 import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -33,8 +32,9 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
@@ -71,9 +71,15 @@ val sampleEmails = listOf(
     )
 )
 
+@Preview (widthDp = 300, heightDp = 600)
+@Composable
+fun CompactScreen(
+) {
+    GmailScreen{}
+}
 
 @Composable
-fun GmailScreen(backHome: () -> Unit) {
+fun GmailScreen(emails: List<Email> = sampleEmails, backHome: () -> Unit) {
     var searchItem by remember { mutableStateOf("") }
     Column(modifier = Modifier.background(color = Color.White)) {
         GmailAppBar(backHome = backHome)
@@ -89,7 +95,7 @@ fun GmailScreen(backHome: () -> Unit) {
                 )
             }
             Spacer(modifier = Modifier.size(16.dp))
-            sampleEmails.forEach { email ->
+            emails.forEach { email ->
                 EmailRow(emails = email)
                 Spacer(modifier = Modifier.size(16.dp))
             }
@@ -112,10 +118,13 @@ fun EmailRow(emails: Email) {
                 Text(text = emails.sender, fontWeight = FontWeight.Bold)
                 Text(text = emails.date, fontSize = 12.sp)
             }
-            Text(text = emails.subject, fontWeight = FontWeight.SemiBold)
+            Row(modifier = Modifier.fillMaxWidth()) {
+                Text(text = emails.subject, fontWeight = FontWeight.SemiBold, maxLines = 1, overflow = TextOverflow.Ellipsis, modifier = Modifier.weight(2f))
+                Spacer(modifier = Modifier.weight(0.5f))
+            }
             Row(horizontalArrangement = Arrangement.SpaceBetween, modifier = Modifier.fillMaxWidth()) {
-                Text(text = emails.message)
-                Icon(Icons.Outlined.FavoriteBorder, null)
+                Text(text = emails.message, maxLines = 1, overflow = TextOverflow.Ellipsis, modifier = Modifier.weight(2f))
+                Icon(Icons.Outlined.FavoriteBorder, null, modifier = Modifier.weight(0.5f))
             }
         }
     }
