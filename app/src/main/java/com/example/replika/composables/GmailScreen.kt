@@ -7,8 +7,8 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.requiredHeightIn
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.rememberScrollState
@@ -130,7 +130,7 @@ fun EmailRow(emails: Email) {
                 Text(text = emails.sender, fontWeight = FontWeight.Bold)
                 Text(
                     text = emails.date, fontSize = 12.sp, modifier = Modifier
-                        .height(21.dp)
+                        .requiredHeightIn(min = 21.dp)
                         .wrapContentHeight(Alignment.Bottom)
                 )
             }
@@ -171,7 +171,7 @@ fun GmailSearchBar(value: String, onValueChange: (String) -> Unit) {
         Spacer(modifier = Modifier.size(8.dp))
         TextField(
             value = value,
-            placeholder = { Text(text = "Search in emails") },
+            placeholder = { Text(text = "Search in emails", maxLines = 1, overflow = TextOverflow.Clip) },
             onValueChange = { onValueChange(it) },
             singleLine = true,
             modifier = Modifier.weight(6f),
@@ -209,7 +209,9 @@ fun GmailAppBar(backHome: () -> Unit) {
         Text(
             "Gmail Inbox", color = Color(135, 187, 70, 255),
             fontWeight = FontWeight.SemiBold,
-            fontSize = 30.sp
+            fontSize = 30.sp,
+            maxLines = 1,
+            overflow = TextOverflow.Ellipsis
         )
     }, navigationIcon = {
         IconButton({}) {
