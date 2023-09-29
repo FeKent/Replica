@@ -7,8 +7,10 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
@@ -63,7 +65,14 @@ val sampleEmails = listOf(
         date = "28th Sept"
     ),
     Email(
-      icon = {Icon(Icons.Filled.AccountCircle, null, tint = Color(226,135,67), modifier = Modifier.size(50.dp))},
+        icon = {
+            Icon(
+                Icons.Filled.AccountCircle,
+                null,
+                tint = Color(226, 135, 67),
+                modifier = Modifier.size(50.dp)
+            )
+        },
         sender = "Amazon",
         subject = "Your Amazon Order of \"Morpho\"",
         message = "Amazon.co.uk Your Orders | Your Account",
@@ -71,11 +80,11 @@ val sampleEmails = listOf(
     )
 )
 
-@Preview (widthDp = 300, heightDp = 600)
+@Preview(widthDp = 300, heightDp = 600)
 @Composable
 fun CompactScreen(
 ) {
-    GmailScreen{}
+    GmailScreen {}
 }
 
 @Composable
@@ -114,16 +123,37 @@ fun EmailRow(emails: Email) {
         emails.icon()
         Spacer(modifier = Modifier.size(4.dp))
         Column {
-            Row(horizontalArrangement = Arrangement.SpaceBetween, modifier = Modifier.fillMaxWidth()) {
+            Row(
+                horizontalArrangement = Arrangement.SpaceBetween,
+                modifier = Modifier.fillMaxWidth()
+            ) {
                 Text(text = emails.sender, fontWeight = FontWeight.Bold)
-                Text(text = emails.date, fontSize = 12.sp)
+                Text(
+                    text = emails.date, fontSize = 12.sp, modifier = Modifier
+                        .height(21.dp)
+                        .wrapContentHeight(Alignment.Bottom)
+                )
             }
             Row(modifier = Modifier.fillMaxWidth()) {
-                Text(text = emails.subject, fontWeight = FontWeight.SemiBold, maxLines = 1, overflow = TextOverflow.Ellipsis, modifier = Modifier.weight(2f))
+                Text(
+                    text = emails.subject,
+                    fontWeight = FontWeight.SemiBold,
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis,
+                    modifier = Modifier.weight(2f)
+                )
                 Spacer(modifier = Modifier.weight(0.5f))
             }
-            Row(horizontalArrangement = Arrangement.SpaceBetween, modifier = Modifier.fillMaxWidth()) {
-                Text(text = emails.message, maxLines = 1, overflow = TextOverflow.Ellipsis, modifier = Modifier.weight(2f))
+            Row(
+                horizontalArrangement = Arrangement.SpaceBetween,
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                Text(
+                    text = emails.message,
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis,
+                    modifier = Modifier.weight(2f)
+                )
                 Icon(Icons.Outlined.FavoriteBorder, null, modifier = Modifier.weight(0.5f))
             }
         }
