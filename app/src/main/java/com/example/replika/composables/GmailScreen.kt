@@ -18,9 +18,11 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountCircle
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.Menu
+import androidx.compose.material.icons.outlined.Edit
 import androidx.compose.material.icons.outlined.FavoriteBorder
 import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.ExtendedFloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
@@ -84,7 +86,7 @@ val sampleEmails = listOf(
 @Composable
 fun CompactScreen(
 ) {
-    GmailScreen {}
+    GmailScreen(emails = emptyList()) {}
 }
 
 @Composable
@@ -108,7 +110,17 @@ fun GmailScreen(emails: List<Email> = sampleEmails, backHome: () -> Unit) {
                 EmailRow(emails = email)
                 Spacer(modifier = Modifier.size(16.dp))
             }
+            ComposeNew(modifier = Modifier.align(Alignment.End))
         }
+    }
+}
+
+@Composable
+fun ComposeNew(modifier: Modifier) {
+    ExtendedFloatingActionButton(onClick = { /*TODO*/ }, modifier = modifier) {
+        Icon(Icons.Outlined.Edit, null)
+        Spacer(modifier = Modifier.size(4.dp))
+        Text(text = "Compose")
     }
 }
 
@@ -171,7 +183,13 @@ fun GmailSearchBar(value: String, onValueChange: (String) -> Unit) {
         Spacer(modifier = Modifier.size(8.dp))
         TextField(
             value = value,
-            placeholder = { Text(text = "Search in emails", maxLines = 1, overflow = TextOverflow.Clip) },
+            placeholder = {
+                Text(
+                    text = "Search in emails",
+                    maxLines = 1,
+                    overflow = TextOverflow.Clip
+                )
+            },
             onValueChange = { onValueChange(it) },
             singleLine = true,
             modifier = Modifier.weight(6f),
