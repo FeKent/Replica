@@ -1,11 +1,11 @@
 package com.example.replika.composables
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.requiredHeightIn
@@ -23,8 +23,10 @@ import androidx.compose.material.icons.outlined.FavoriteBorder
 import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ExtendedFloatingActionButton
+import androidx.compose.material3.FabPosition
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
@@ -79,6 +81,20 @@ val sampleEmails = listOf(
         subject = "Your Amazon Order of \"Morpho\"",
         message = "Amazon.co.uk Your Orders | Your Account",
         date = "27th Sept"
+    ),
+    Email(
+        icon = {
+            Icon(
+                Icons.Filled.AccountCircle,
+                null,
+                tint = Color(61, 220, 132),
+                modifier = Modifier.size(50.dp)
+            )
+        },
+        sender = "Kotlin Weekly",
+        subject = "Kotlin Weekly #373",
+        message = "Articles using Klover for Effective Code Coverage in Kotlin Projects",
+        date = "24th Sept"
     )
 )
 
@@ -86,13 +102,31 @@ val sampleEmails = listOf(
 @Composable
 fun CompactScreen(
 ) {
-    GmailScreen(emails = emptyList()) {}
+    ScaffoldedGmailScreen {}
 }
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun ScaffoldedGmailScreen(backHome: () -> Unit) {
+    Scaffold(
+        floatingActionButton = { ComposeNew() },
+        floatingActionButtonPosition = FabPosition.End
+    ) { paddingValues ->
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(paddingValues)
+        ) {
+            GmailScreen(sampleEmails, backHome = backHome)
+        }
+    }
+}
+
 
 @Composable
 fun GmailScreen(emails: List<Email> = sampleEmails, backHome: () -> Unit) {
     var searchItem by remember { mutableStateOf("") }
-    Column(modifier = Modifier.background(color = Color.White)) {
+    Column {
         GmailAppBar(backHome = backHome)
         GmailSearchBar(value = searchItem, onValueChange = { searchItem = it })
         Spacer(modifier = Modifier.size(16.dp))
@@ -110,14 +144,14 @@ fun GmailScreen(emails: List<Email> = sampleEmails, backHome: () -> Unit) {
                 EmailRow(emails = email)
                 Spacer(modifier = Modifier.size(16.dp))
             }
-            ComposeNew(modifier = Modifier.align(Alignment.End))
+//            ComposeNew()
         }
     }
 }
 
 @Composable
-fun ComposeNew(modifier: Modifier) {
-    ExtendedFloatingActionButton(onClick = { /*TODO*/ }, modifier = modifier) {
+fun ComposeNew() {
+    ExtendedFloatingActionButton(onClick = { /*TODO*/ }) {
         Icon(Icons.Outlined.Edit, null)
         Spacer(modifier = Modifier.size(4.dp))
         Text(text = "Compose")
